@@ -1,3 +1,0 @@
-# BookingBeauty
-
-Projeto de IM
