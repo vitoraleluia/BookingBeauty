@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "311392830264",
+    "project_id": "booking-beauty-d8033",
+    "storage_bucket": "booking-beauty-d8033.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:311392830264:android:af6d10a5a6aa1be6c1b7cd",
+        "android_client_info": {
+          "package_name": "com.im.va20190648.vitor.aleluia.bookingbeauty"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "311392830264-1rjt69f0g90uo94ih1lsraffsls8bfpk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAD-M28HbXzTV72DOBh87C1ph8rg6ugh3c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "311392830264-1rjt69f0g90uo94ih1lsraffsls8bfpk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
