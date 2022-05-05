@@ -4,10 +4,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EcraInicialCliente">
+    tools:context=".EcraInicialEsteticista">
 
     <ImageView
-        android:id="@+id/imageViewUtilizador"
+        android:id="@+id/imageViewUtilizadorE"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_marginTop="16dp"
@@ -17,11 +17,11 @@
         app:srcCompat="@drawable/utilizador" />
 
     <ImageView
-        android:id="@+id/imageViewLogo"
+        android:id="@+id/imageViewLogoE"
         android:layout_width="120dp"
         android:layout_height="120dp"
         android:scaleType="fitCenter"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2E"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -29,45 +29,45 @@
         app:srcCompat="@drawable/logo_booking_beauty" />
 
     <TextView
-        android:id="@+id/textViewLogo"
+        android:id="@+id/textViewLogoE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Olá, Utilizador."
+        android:text="Bem-vindo, John Doe."
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+        app:layout_constraintTop_toTopOf="@+id/guideline2E" />
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageServicos"
+        android:id="@+id/imageServicosE"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="15dp"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/imageMarcacoes"
+        app:layout_constraintBottom_toTopOf="@+id/imageMarcacoesE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLogo"
+        app:layout_constraintTop_toBottomOf="@+id/textViewLogoE"
         app:layout_constraintVertical_bias="0.86"
         app:shapeAppearanceOverlay="@style/roundedImageView"
         app:srcCompat="@drawable/servicos" />
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageMarcacoes"
+        android:id="@+id/imageMarcacoesE"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="15dp"
         android:scaleType="centerCrop"
-        app:layout_constraintBottom_toTopOf="@+id/imageSobre"
+        app:layout_constraintBottom_toTopOf="@+id/imageSobreE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageServicos"
+        app:layout_constraintTop_toBottomOf="@+id/imageServicosE"
         app:shapeAppearanceOverlay="@style/roundedImageView"
         app:srcCompat="@drawable/marcacoes" />
 
     <com.google.android.material.imageview.ShapeableImageView
-        android:id="@+id/imageSobre"
+        android:id="@+id/imageSobreE"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="15dp"
@@ -75,12 +75,12 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageMarcacoes"
+        app:layout_constraintTop_toBottomOf="@+id/imageMarcacoesE"
         app:shapeAppearanceOverlay="@style/roundedImageView"
-        app:srcCompat="@drawable/sobre" />
+        app:srcCompat="@drawable/agenda" />
 
     <TextView
-        android:id="@+id/textViewMarcacoes"
+        android:id="@+id/textViewMarcacoesE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:shadowColor="#000000"
@@ -91,15 +91,15 @@
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageMarcacoes"
+        app:layout_constraintBottom_toBottomOf="@+id/imageMarcacoesE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageMarcacoes"
+        app:layout_constraintTop_toTopOf="@+id/imageMarcacoesE"
         app:layout_constraintVertical_bias="0.85" />
 
     <TextView
-        android:id="@+id/textViewServicos"
+        android:id="@+id/textViewServicosE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:shadowColor="#000000"
@@ -110,34 +110,34 @@
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageServicos"
+        app:layout_constraintBottom_toBottomOf="@+id/imageServicosE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageServicos"
+        app:layout_constraintTop_toTopOf="@+id/imageServicosE"
         app:layout_constraintVertical_bias="0.85" />
 
     <TextView
-        android:id="@+id/textViewSobre"
+        android:id="@+id/textViewSobreE"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:shadowColor="#000000"
         android:shadowDx="1"
         android:shadowDy="1"
         android:shadowRadius="2"
-        android:text="@string/BB_Sobre"
+        android:text="@string/BB_Agenda"
         android:textColor="@color/white"
         android:textSize="24sp"
         android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="@+id/imageSobre"
+        app:layout_constraintBottom_toBottomOf="@+id/imageSobreE"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/imageSobre"
+        app:layout_constraintTop_toTopOf="@+id/imageSobreE"
         app:layout_constraintVertical_bias="0.85" />
 
     <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline2"
+        android:id="@+id/guideline2E"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
