@@ -63,7 +63,7 @@ public class RegistoActivity extends AppCompatActivity {
                 hashMap.put("telemovel", getNTelemovel);
 
                 FirebaseFirestore.getInstance().collection("utilizadores")
-                        .document("utilizadores")
+                        .document(getEmail.toString())
                         .set(hashMap)
                         .addOnSuccessListener(new OnSuccessListener<Void>() {
                             @Override
