@@ -5,13 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.material.textfield.TextInputLayout;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.firestore.CollectionReference;
@@ -27,14 +30,16 @@ import io.grpc.okhttp.internal.Util;
 public class MainActivity extends AppCompatActivity {
 
     FirebaseFirestore db= FirebaseFirestore.getInstance();
-
+    FirebaseAuth mAuth = FirebaseAuth.getInstance();
     CollectionReference utilizadores;
     ListenerRegistration registration=null;
-    DocumentReference doc = db.collection("utilizadores").document("Cliente1");
+    DocumentReference doc = null;
 
     TextInputLayout nome, email, password, telemovel;
 
-    String nomeUt = "Cliente1";
+    String nomeUt = null;
+    String nomeNovo, emailNovo, passwordNova, telemovelNovo;
+    String nomeAnterior, emailAnterior, passwordAnterior, telemovelAnterior;
 
 
     @Override
@@ -47,7 +52,8 @@ public class MainActivity extends AppCompatActivity {
 
         setContentView(R.layout.activity_main);
 
-
+        doc = db.collection("utilizadores").document(mAuth.getCurrentUser().getEmail().toString());
+        nomeUt = mAuth.getCurrentUser().getEmail().toString();
         utilizadores = db.collection("utilizadores");
 
         if (registration != null)
@@ -69,13 +75,17 @@ public class MainActivity extends AppCompatActivity {
                         return;
                     }
                     if (snapshot != null && snapshot.exists()) {
-//warning: the field ‘descricao’ must exist in the NoSQL document
+                        nomeAnterior=snapshot.get("nome").toString();
+                        emailAnterior=snapshot.get("e-mail").toString();
+                        passwordAnterior=snapshot.get("password").toString();
+                        telemovelAnterior=snapshot.get("telemovel").toString();
+
                         nome.getEditText().setText(snapshot.get("nome").toString());
                         email.getEditText().setText(snapshot.get("e-mail").toString());
                         password.getEditText().setText(snapshot.get("password").toString());
                         telemovel.getEditText().setText(snapshot.get("telemovel").toString());
                     } else {
-                        Log.d("PRECOS", "Current data: null");
+                        Log.d("Utilizadores", "Current data: null");
                     }
                 }
             });
@@ -85,16 +95,48 @@ public class MainActivity extends AppCompatActivity {
 
     public void botaoPremido(View v) {
 
-        Intent i = new Intent(getApplicationContext(), VerMarcacoesActivity.class);
-        startActivity(i);
+        if(nome.getEditText().getText().toString().trim().matches("")) {
+            nome.setError("Campo obrigatório!!!");
+            return;
 
-        /*String nomeNovo = nome.getEditText().getText().toString();
-        String passwordNova = password.getEditText().getText().toString();
-        String emailNovo = email.getEditText().getText().toString();
-        String telemovelNovo = telemovel.getEditText().getText().toString();
-        doc.update("nome", nomeNovo, "e-mail", emailNovo, "password", passwordNova, "telemovel",telemovelNovo);
+        } else if(password.getEditText().getText().toString().trim().matches("")){
+                password.setError("Campo obrigatório!!!");
+                return;
 
-         */
+        } else if(email.getEditText().getText().toString().trim().matches("")){
+            email.setError("Campo obrigatório!!!");
+            return;
+
+        } else if(telemovel.getEditText().getText().toString().trim().matches("")) {
+            telemovel.setError("Campo obrigatório!!!");
+            return;
+
+        } else {
+            nomeNovo = nome.getEditText().getText().toString();
+            passwordNova = password.getEditText().getText().toString();
+            emailNovo = email.getEditText().getText().toString();
+            telemovelNovo = telemovel.getEditText().getText().toString();
+
+            if (nomeAnterior.equals(nomeNovo) && emailAnterior.equals(emailNovo) && passwordAnterior.equals(passwordNova) && telemovelAnterior.equals(telemovelNovo)) {
+                nome.setError("O nome não foi alterado!!!");
+                email.setError("O e-mail não foi alterado!!!");
+                password.setError("A password não foi alterada!!!");
+                telemovel.setError("O número de telemóvel não foi alterado!!!");
+                return;
+
+            } else if (passwordNova.length()<=6) {
+                password.setError("A password é demasiado curta!!!");
+                return;
+
+            } else {
+                nome.setErrorEnabled(false);
+                email.setErrorEnabled(false);
+                password.setErrorEnabled(false);
+                telemovel.setErrorEnabled(false);
+                mAuth.getCurrentUser().updatePassword(passwordNova);
+                doc.update("nome", nomeNovo, "e-mail", emailNovo, "password", passwordNova, "telemovel", telemovelNovo);
+                Toast.makeText(MainActivity.this, "Alteração realizada com sucesso!!!", Toast.LENGTH_SHORT).show();
+            }
+        }
     }
-
 }
