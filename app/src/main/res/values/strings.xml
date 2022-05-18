@@ -7,4 +7,6 @@
     <string name="BB_NomeServicos">Nome do serviço</string>
     <string name="BB_Duracao">Duração</string>
     <string name="BB_Preço">Preço</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
