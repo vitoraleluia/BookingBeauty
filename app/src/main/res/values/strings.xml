@@ -4,4 +4,7 @@
     <string name="BB_Marcacoes">Marcações</string>
     <string name="BB_Sobre">Sobre</string>
     <string name="BB_Agenda">Agenda</string>
+    <string name="BB_NomeServicos">Nome do serviço</string>
+    <string name="BB_Duracao">Duração</string>
+    <string name="BB_Preço">Preço</string>
 </resources>

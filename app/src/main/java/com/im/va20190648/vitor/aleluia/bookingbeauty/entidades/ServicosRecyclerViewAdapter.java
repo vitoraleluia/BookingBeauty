@@ -1,4 +1,4 @@
-package com.im.va20190648.vitor.aleluia.bookingbeauty;
+package com.im.va20190648.vitor.aleluia.bookingbeauty.entidades;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -9,8 +9,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
+
 import java.util.ArrayList;
-import java.util.zip.Inflater;
 
 public class ServicosRecyclerViewAdapter extends RecyclerView.Adapter<ServicosRecyclerViewAdapter.MyViewHolder> {
     Context context;
@@ -31,9 +32,9 @@ public class ServicosRecyclerViewAdapter extends RecyclerView.Adapter<ServicosRe
 
     @Override
     public void onBindViewHolder(@NonNull ServicosRecyclerViewAdapter.MyViewHolder holder, int position) {
-        holder.textViewNome.setText(listaServicos.get(position).getNome());
-        holder.textViewPreco.setText(listaServicos.get(position).getPreco());
-        holder.textViewDuracao.setText(listaServicos.get(position).getDuracao());
+        holder.textViewNome.setText(listaServicos.get(position).getNome().toString());
+        holder.textViewPreco.setText(listaServicos.get(position).getPreco().toString());
+        holder.textViewDuracao.setText(listaServicos.get(position).getDuracao().toString());
     }
 
     @Override

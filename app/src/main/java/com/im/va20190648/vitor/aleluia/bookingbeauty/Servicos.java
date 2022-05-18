@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -15,6 +16,8 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.Servico;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.ServicosRecyclerViewAdapter;
 
 import java.util.ArrayList;
 
@@ -56,19 +59,26 @@ public class Servicos extends AppCompatActivity {
 
                         //Colocar todos os servicos em classes
                         String nome = document.get("nome").toString();
-                        Integer preco = Integer.getInteger(document.get("preco").toString());
-                        Integer duracao = Integer.getInteger(document.get("duracao").toString());
+                        Integer preco = Integer.parseInt(document.get("preco").toString());
+                        Integer duracao = Integer.parseInt(document.get("duracao").toString());
                         Servico s = new Servico(nome,preco,duracao);
                         listaServicos.add(s);
                     }
 
+                    //Após adicionar todos os servicos deve mostrá-los
+                    mostrarServicos();
+
                 }else{
                     Log.d(TAG, "Falha ao carregar servicos");
+                    Toast.makeText(Servicos.this, "Sem conexão com a internet", Toast.LENGTH_SHORT).show();
                 }
             }
         });
 
-        //Mudar isto, nao esta a listar os servicos
+
+    }
+
+    public void mostrarServicos(){
         ServicosRecyclerViewAdapter adapter = new ServicosRecyclerViewAdapter(this, listaServicos);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));

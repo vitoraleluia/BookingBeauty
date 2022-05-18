@@ -1,4 +1,4 @@
-package com.im.va20190648.vitor.aleluia.bookingbeauty;
+package com.im.va20190648.vitor.aleluia.bookingbeauty.entidades;
 
 public class Servico {
     private String nome;
@@ -22,5 +22,14 @@ public class Servico {
 
     public Integer getDuracao() {
         return duracao;
+    }
+
+    @Override
+    public String toString() {
+        return "Servico{" +
+                "nome='" + nome + '\'' +
+                ", preco=" + preco +
+                ", duracao=" + duracao +
+                '}';
     }
 }
