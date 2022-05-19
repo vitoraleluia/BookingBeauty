@@ -92,6 +92,12 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
+    public void logout(View v) {
+        mAuth.signOut();
+
+        Intent i = new Intent(getApplicationContext(),LoginActivity.class);
+        startActivity(i);
+    }
 
     public void botaoPremido(View v) {
 
@@ -102,10 +108,6 @@ public class MainActivity extends AppCompatActivity {
         } else if(password.getEditText().getText().toString().trim().matches("")){
                 password.setError("Campo obrigatório!!!");
                 return;
-
-        } else if(email.getEditText().getText().toString().trim().matches("")){
-            email.setError("Campo obrigatório!!!");
-            return;
 
         } else if(telemovel.getEditText().getText().toString().trim().matches("")) {
             telemovel.setError("Campo obrigatório!!!");
@@ -119,7 +121,6 @@ public class MainActivity extends AppCompatActivity {
 
             if (nomeAnterior.equals(nomeNovo) && emailAnterior.equals(emailNovo) && passwordAnterior.equals(passwordNova) && telemovelAnterior.equals(telemovelNovo)) {
                 nome.setError("O nome não foi alterado!!!");
-                email.setError("O e-mail não foi alterado!!!");
                 password.setError("A password não foi alterada!!!");
                 telemovel.setError("O número de telemóvel não foi alterado!!!");
                 return;
@@ -130,7 +131,6 @@ public class MainActivity extends AppCompatActivity {
 
             } else {
                 nome.setErrorEnabled(false);
-                email.setErrorEnabled(false);
                 password.setErrorEnabled(false);
                 telemovel.setErrorEnabled(false);
                 mAuth.getCurrentUser().updatePassword(passwordNova);
