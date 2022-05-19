@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".AdicionarServico">
+    tools:context=".EditarEliminarServico">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline6"
@@ -30,9 +30,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayoutDuracao"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline6">
+        app:layout_constraintTop_toBottomOf="@+id/fragmentContainerView2">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -48,7 +47,6 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@+id/textInputLayoutPreco"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutNomeServico"
         app:startIconDrawable="@drawable/ic_baseline_access_time_filled_24">
@@ -64,9 +62,8 @@
         android:id="@+id/textInputLayoutPreco"
         android:layout_width="300dp"
         android:layout_height="wrap_content"
-        app:layout_constraintBottom_toTopOf="@+id/buttonEliminar"
+        app:layout_constraintBottom_toTopOf="@+id/button3"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutDuracao"
         app:startIconDrawable="@drawable/ic_baseline_attach_money_24">
@@ -82,14 +79,28 @@
         android:id="@+id/buttonEliminar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/black"
-        android:backgroundTint="@color/bb_pink"
-        android:onClick="onClickAdicionar"
-        android:text="@string/BB_adicionar"
+        android:background="#BF360C"
+        android:backgroundTint="#BF360C"
+        android:text="@string/BB_Eliminar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/button3"
+        tools:ignore="TextContrastCheck"
+        android:onClick="onClickApagar"/>
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:backgroundTint="@color/bb_pink"
+        android:text="@string/BB_editar"
+        app:layout_constraintBottom_toTopOf="@+id/buttonEliminar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPreco"
-        tools:ignore="TextContrastCheck" />
+        tools:ignore="TextContrastCheck"
+        android:onClick="onClickEditar"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,11 +1,23 @@
 package com.im.va20190648.vitor.aleluia.bookingbeauty.entidades;
 
-public class Servico {
+import java.io.Serializable;
+
+public class Servico implements Serializable {
+    private String id;
     private String nome;
     private Integer preco;
     private Integer duracao;
 
 
+    //Construtor para editar/listar os servicos existentes
+    public Servico(String id, String nome, Integer preco, Integer duracao) {
+        this.id = id;
+        this.nome = nome;
+        this.preco = preco;
+        this.duracao = duracao;
+    }
+
+    //Construtor para adicionar novos servicos
     public Servico(String nome, Integer preco, Integer duracao) {
         this.nome = nome;
         this.preco = preco;
@@ -31,5 +43,9 @@ public class Servico {
                 ", preco=" + preco +
                 ", duracao=" + duracao +
                 '}';
+    }
+
+    public String getId() {
+        return id;
     }
 }

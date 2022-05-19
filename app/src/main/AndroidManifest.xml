@@ -22,6 +22,9 @@
             android:name=".EcraInicialCliente"
             android:exported="false" />
         <activity
+            android:name=".EditarEliminarServico"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true" >
             <intent-filter>

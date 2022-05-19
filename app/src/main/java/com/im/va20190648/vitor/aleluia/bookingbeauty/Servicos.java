@@ -19,11 +19,12 @@ import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.Servico;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.ServicoListener;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.ServicosRecyclerViewAdapter;
 
 import java.util.ArrayList;
 
-public class Servicos extends AppCompatActivity {
+public class Servicos extends AppCompatActivity implements ServicoListener {
 
     FirebaseFirestore db = FirebaseFirestore.getInstance();
     CollectionReference servicos;
@@ -61,10 +62,11 @@ public class Servicos extends AppCompatActivity {
                         Log.d(TAG, document.getId() + " => " + document.getData());//Listar os servicos todos
 
                         //Colocar todos os servicos em classes
+                        String id = document.getId();
                         String nome = document.get("nome").toString();
                         Integer preco = Integer.parseInt(document.get("preco").toString());
                         Integer duracao = Integer.parseInt(document.get("duracao").toString());
-                        Servico s = new Servico(nome,preco,duracao);
+                        Servico s = new Servico(id,nome,preco,duracao);
                         listaServicos.add(s);
                     }
 
@@ -80,7 +82,7 @@ public class Servicos extends AppCompatActivity {
     }
 
     public void mostrarServicos(){
-        ServicosRecyclerViewAdapter adapter = new ServicosRecyclerViewAdapter(this, listaServicos);
+        ServicosRecyclerViewAdapter adapter = new ServicosRecyclerViewAdapter(this, listaServicos, this);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
@@ -90,5 +92,15 @@ public class Servicos extends AppCompatActivity {
         Intent i = new Intent(this, AdicionarServico.class);
         startActivity(i);
 
+    }
+
+    @Override
+    public void onServicoClick(int position) {
+        Servico servicoSelecionado = listaServicos.get(position);
+        Intent editarServico = new Intent(this, EditarEliminarServico.class);
+        editarServico.putExtra("servicoSelecionado", servicoSelecionado);
+        startActivity(editarServico);
+
+        //Enviar para o editar/eliminar servico
     }
 }
