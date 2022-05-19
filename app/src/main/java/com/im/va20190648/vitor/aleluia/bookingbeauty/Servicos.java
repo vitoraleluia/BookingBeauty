@@ -5,8 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -44,6 +46,7 @@ public class Servicos extends AppCompatActivity {
 
     @Override
     protected void onStart() {
+        listaServicos.clear();
         super.onStart();
 
         //Ir buscar todos os servicos
@@ -74,13 +77,18 @@ public class Servicos extends AppCompatActivity {
                 }
             }
         });
-
-
     }
 
     public void mostrarServicos(){
         ServicosRecyclerViewAdapter adapter = new ServicosRecyclerViewAdapter(this, listaServicos);
         recyclerView.setAdapter(adapter);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+    }
+
+    public void onClickAdicionar(View v){
+        //Quando clica em adicionar servico deve ser redirecionado para adicionar servicos
+        Intent i = new Intent(this, AdicionarServico.class);
+        startActivity(i);
+
     }
 }
