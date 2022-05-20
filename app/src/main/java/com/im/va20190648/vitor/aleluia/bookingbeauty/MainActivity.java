@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Intent i = new Intent(this, EcraInicialCliente.class);
+        Intent i = new Intent(this, EcraInicialEsteticista.class);
         startActivity(i);
     }
 }

@@ -15,9 +15,4 @@ public class EcraInicialCliente extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ecra_inicial_cliente);
     }
-
-    public void onClickServicos(View v){
-        Intent servicos = new Intent(EcraInicialCliente.this, Servicos.class);
-        startActivity(servicos);
-    }
 }

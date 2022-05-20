@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
     tools:context=".EditarEliminarServico">
 
     <androidx.constraintlayout.widget.Guideline
@@ -15,7 +14,7 @@
         app:layout_constraintGuide_percent="0.21" />
 
     <androidx.fragment.app.FragmentContainerView
-        android:id="@+id/fragmentContainerView2"
+        android:id="@+id/fragmentContainerView3"
         android:name="com.im.va20190648.vitor.aleluia.bookingbeauty.LogoTopBar"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -31,7 +30,7 @@
         app:layout_constraintBottom_toTopOf="@+id/textInputLayoutDuracao"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/fragmentContainerView2">
+        app:layout_constraintTop_toTopOf="@+id/guideline6">
 
         <com.google.android.material.textfield.TextInputEditText
             android:layout_width="match_parent"
@@ -79,28 +78,26 @@
         android:id="@+id/buttonEliminar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="#BF360C"
-        android:backgroundTint="#BF360C"
+        android:onClick="onClickApagar"
         android:text="@string/BB_Eliminar"
+        app:icon="@drawable/ic_baseline_delete_24"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button3"
-        tools:ignore="TextContrastCheck"
-        android:onClick="onClickApagar"/>
+        tools:ignore="TextContrastCheck" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/black"
-        android:backgroundTint="@color/bb_pink"
+        android:onClick="onClickEditar"
         android:text="@string/BB_editar"
+        app:icon="@drawable/ic_baseline_edit_24"
         app:layout_constraintBottom_toTopOf="@+id/buttonEliminar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textInputLayoutPreco"
-        tools:ignore="TextContrastCheck"
-        android:onClick="onClickEditar"/>
+        tools:ignore="TextContrastCheck" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
