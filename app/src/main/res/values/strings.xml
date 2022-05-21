@@ -21,4 +21,7 @@
     <string name="BB_adicionar">Adicionar</string>
     <string name="BB_editar">Editar</string>
     <string name="BB_Eliminar">Eliminar</string>
+    <string name="BB_Selecione">Selecione os serviços</string>
+    <string name="BB_Total">Total: 0€</string>
+    <string name="BB_Prosseguir">Prosseguir</string>
 </resources>

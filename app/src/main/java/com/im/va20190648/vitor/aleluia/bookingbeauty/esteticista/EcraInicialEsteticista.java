@@ -1,10 +1,12 @@
-package com.im.va20190648.vitor.aleluia.bookingbeauty;
+package com.im.va20190648.vitor.aleluia.bookingbeauty.esteticista;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
 
 public class EcraInicialEsteticista extends AppCompatActivity {
 

@@ -1,4 +1,4 @@
-package com.im.va20190648.vitor.aleluia.bookingbeauty;
+package com.im.va20190648.vitor.aleluia.bookingbeauty.esteticista;
 
 import android.content.Intent;
 import android.graphics.Color;
@@ -12,6 +12,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.SetOptions;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.Servico;
 
 import java.util.ArrayList;

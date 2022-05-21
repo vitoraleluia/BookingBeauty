@@ -1,4 +1,4 @@
-package com.im.va20190648.vitor.aleluia.bookingbeauty;
+package com.im.va20190648.vitor.aleluia.bookingbeauty.esteticista;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -18,6 +18,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.Servico;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.ServicoListener;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.ServicosRecyclerViewAdapter;

@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".EcraInicialCliente">
+    tools:context=".cliente.EcraInicialCliente">
 
     <TextView
         android:id="@+id/textViewLogo"
@@ -22,6 +22,7 @@
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="15dp"
+        android:onClick="onClickServicos"
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toTopOf="@+id/imageMarcacoes"
         app:layout_constraintEnd_toEndOf="parent"
@@ -123,7 +124,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
-        android:name="com.im.va20190648.vitor.aleluia.bookingbeauty.LogoTopBar"
+        android:name="com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.LogoTopBar"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"

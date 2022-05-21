@@ -1,4 +1,4 @@
-package com.im.va20190648.vitor.aleluia.bookingbeauty;
+package com.im.va20190648.vitor.aleluia.bookingbeauty.entidades;
 
 import android.os.Bundle;
 
@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
 
 /**
  * A simple {@link Fragment} subclass.

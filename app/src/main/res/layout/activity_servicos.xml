@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Servicos">
+    tools:context=".esteticista.Servicos">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
@@ -15,7 +15,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView"
-        android:name="com.im.va20190648.vitor.aleluia.bookingbeauty.LogoTopBar"
+        android:name="com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.LogoTopBar"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline5"

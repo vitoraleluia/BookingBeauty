@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".AdicionarServico">
+    tools:context=".esteticista.AdicionarServico">
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline6"
@@ -16,7 +16,7 @@
 
     <androidx.fragment.app.FragmentContainerView
         android:id="@+id/fragmentContainerView2"
-        android:name="com.im.va20190648.vitor.aleluia.bookingbeauty.LogoTopBar"
+        android:name="com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.LogoTopBar"
         android:layout_width="0dp"
         android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@+id/guideline6"
