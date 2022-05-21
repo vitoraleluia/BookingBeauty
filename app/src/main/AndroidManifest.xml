@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BookingBeauty">
         <activity
+            android:name=".cliente.FazerMarcacaoCliente"
+            android:exported="false" />
+        <activity
             android:name=".cliente.SelecionarServicos"
             android:exported="false" />
         <activity

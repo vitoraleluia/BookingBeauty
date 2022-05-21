@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
@@ -106,5 +107,9 @@ public class SelecionarServicos extends AppCompatActivity implements ListaServic
             Toast.makeText(this, "Sem serviços selecionados", Toast.LENGTH_SHORT).show();
             return;
         }
+
+        Intent marcacoes = new Intent(this, FazerMarcacaoCliente.class);
+        marcacoes.putExtra("servicosSelecionados",servicosSelecionados);
+        startActivity(marcacoes);
     }
 }
