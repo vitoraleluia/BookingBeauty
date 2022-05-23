@@ -45,8 +45,6 @@ public class RegistoActivity extends AppCompatActivity {
 
         btRegistar = findViewById(R.id.btRegistar);
 
-
-
         btRegistar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -55,12 +53,16 @@ public class RegistoActivity extends AppCompatActivity {
                 String getPassword = passwordRegisto.getText().toString();
                 String getNTelemovel = ntelemovelRegisto.getText().toString();
 
+                registarUser();
+                criarUser();
+
                 HashMap<String, Object> hashMap = new HashMap<>();
 
                 hashMap.put("nome", getNome);
                 hashMap.put("e-mail", getEmail);
                 hashMap.put("password", getPassword);
                 hashMap.put("telemovel", getNTelemovel);
+                hashMap.put("tipoUser",u.getTipoUtilizador());
 
                 FirebaseFirestore.getInstance().collection("utilizadores")
                         .document(getEmail.toString())
@@ -78,9 +80,6 @@ public class RegistoActivity extends AppCompatActivity {
                             }
                         })
                 ;
-
-                registarUser();
-                criarUser();
             }
         });
 

@@ -9,6 +9,9 @@ public class Utilizador {
     private String email;
     private String password;
     private String ntelemovel;
+    private int tipoUtilizador=0; // user 0 é o utilizador padrão
+
+
 
     public String getId() {
         return id;
@@ -48,6 +51,14 @@ public class Utilizador {
 
     public void setNtelemovel(String ntelemovel) {
         this.ntelemovel = ntelemovel;
+    }
+
+    public int getTipoUtilizador() {
+        return tipoUtilizador;
+    }
+
+    public void setTipoUtilizador(int tipoUtilizador) {
+        this.tipoUtilizador = tipoUtilizador;
     }
 
     public void guardarDados() {
