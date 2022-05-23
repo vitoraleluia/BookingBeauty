@@ -19,6 +19,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.AdapterTrabalhador;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.Marcacao;
 
 import java.util.ArrayList;
 
