@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
 <<<<<<< HEAD
+<<<<<<< HEAD
         <entry key="..\:/Users/VitorAleluia/AndroidStudioProjects/BookingBeauty/app/src/main/res/layout/activity_adicionar_servico.xml" value="0.22" />
         <entry key="..\:/Users/VitorAleluia/AndroidStudioProjects/BookingBeauty/app/src/main/res/layout/activity_ecra_inicial_cliente.xml" value="0.33" />
         <entry key="..\:/Users/VitorAleluia/AndroidStudioProjects/BookingBeauty/app/src/main/res/layout/activity_ecra_inicial_esteticista.xml" value="0.33" />
@@ -18,6 +19,14 @@
 >>>>>>> origin/ecraInicial
         <entry key="..\:/Users/VitorAleluia/AndroidStudioProjects/BookingBeauty/app/src/main/res/layout/activity_main.xml" value="0.5" />
 <<<<<<< HEAD
+=======
+        <entry key="..\:/Users/VitorAleluia/AndroidStudioProjects/BookingBeauty/app/src/main/res/layout/activity_adicionar_servico.xml" value="0.22" />
+        <entry key="..\:/Users/VitorAleluia/AndroidStudioProjects/BookingBeauty/app/src/main/res/layout/activity_ecra_inicial_cliente.xml" value="0.33" />
+        <entry key="..\:/Users/VitorAleluia/AndroidStudioProjects/BookingBeauty/app/src/main/res/layout/activity_ecra_inicial_esteticista.xml" value="0.33" />
+        <entry key="..\:/Users/VitorAleluia/AndroidStudioProjects/BookingBeauty/app/src/main/res/layout/activity_editar_eliminar_servico.xml" value="0.33" />
+        <entry key="..\:/Users/VitorAleluia/AndroidStudioProjects/BookingBeauty/app/src/main/res/layout/activity_login.xml" value="0.33" />
+        <entry key="..\:/Users/VitorAleluia/AndroidStudioProjects/BookingBeauty/app/src/main/res/layout/activity_main.xml" value="0.5" />
+>>>>>>> servicos
         <entry key="..\:/Users/VitorAleluia/AndroidStudioProjects/BookingBeauty/app/src/main/res/layout/activity_principal.xml" value="0.21458333333333332" />
         <entry key="..\:/Users/VitorAleluia/AndroidStudioProjects/BookingBeauty/app/src/main/res/layout/activity_registo.xml" value="0.21458333333333332" />
         <entry key="..\:/Users/VitorAleluia/AndroidStudioProjects/BookingBeauty/app/src/main/res/layout/activity_selecionar_servicos.xml" value="0.33" />
@@ -26,6 +35,7 @@
         <entry key="..\:/Users/VitorAleluia/AndroidStudioProjects/BookingBeauty/app/src/main/res/layout/fragment_logo_top_bar.xml" value="0.33" />
         <entry key="..\:/Users/VitorAleluia/AndroidStudioProjects/BookingBeauty/app/src/main/res/layout/recycler_view_linha_servico.xml" value="0.67" />
         <entry key="..\:/Users/VitorAleluia/AndroidStudioProjects/BookingBeauty/app/src/main/res/layout/rv_selecionar_servicos.xml" value="0.3769230769230769" />
+<<<<<<< HEAD
 =======
         <entry key="..\:/Users/tiago/BookingBeauty/app/src/main/res/layout/activity_ecra_principal.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/tiago/BookingBeauty/app/src/main/res/layout/activity_login.xml" value="0.23229166666666667" />
@@ -34,6 +44,8 @@
         <entry key="..\:/Users/tiago/BookingBeauty/app/src/main/res/layout/activity_principal.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/tiago/BookingBeauty/app/src/main/res/layout/activity_registo.xml" value="0.264" />
 >>>>>>> login
+=======
+>>>>>>> servicos
       </map>
     </option>
   </component>

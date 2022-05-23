@@ -13,4 +13,21 @@
     <string name="BB_Marcacoes">Marcações</string>
     <string name="BB_Sobre">Sobre</string>
     <string name="BB_Agenda">Agenda</string>
+    <string name="BB_NomeServicos">Nome do serviço</string>
+    <string name="BB_Duracao">Duração</string>
+    <string name="BB_Preço">Preço</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_adicionar_servico">AdicionarServico</string>
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="BB_adicionar">Adicionar</string>
+    <string name="BB_editar">Editar</string>
+    <string name="BB_Eliminar">Eliminar</string>
+    <string name="BB_Selecione">Selecione os serviços</string>
+    <string name="BB_Total">Total: 0€</string>
+    <string name="BB_Prosseguir">Prosseguir</string>
 </resources>

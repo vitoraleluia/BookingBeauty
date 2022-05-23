@@ -22,10 +22,22 @@
             android:name=".RegistoActivity"
             android:exported="false" />
         <activity
-            android:name=".EcraInicialEsteticista"
+            android:name=".esteticista.EcraInicialEsteticista"
             android:exported="false" />
         <activity
-            android:name=".EcraInicialCliente"
+            android:name=".cliente.SelecionarServicos"
+            android:exported="false" />
+        <activity
+            android:name=".esteticista.AdicionarServico"
+            android:exported="false" />
+        <activity
+            android:name=".esteticista.Servicos"
+            android:exported="false" />
+        <activity
+            android:name=".cliente.EcraInicialCliente"
+            android:exported="false" />
+        <activity
+            android:name=".esteticista.EditarEliminarServico"
             android:exported="false" />
         <activity
             android:name=".LoginActivity"
