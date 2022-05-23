@@ -18,6 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.cliente.EcraInicialCliente;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.Utilizador;
 
 import java.util.HashMap;
@@ -94,7 +95,7 @@ public class RegistoActivity extends AppCompatActivity {
                             FirebaseUser user = mAuth.getCurrentUser();
                             u.setId(user.getUid());
                             u.guardarDados();
-                            startActivity(new Intent(RegistoActivity.this, PrincipalActivity.class));
+                            startActivity(new Intent(RegistoActivity.this, EcraInicialCliente.class));
                         }else{
                             Toast.makeText(RegistoActivity.this,"Erro ao criar um utilizador", Toast.LENGTH_SHORT).show();
                         }

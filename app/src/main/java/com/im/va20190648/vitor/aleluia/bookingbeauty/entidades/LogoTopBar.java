@@ -1,5 +1,6 @@
 package com.im.va20190648.vitor.aleluia.bookingbeauty.entidades;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -7,8 +8,10 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 
 import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.cliente.EditarDadosUtilizador;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -62,5 +65,9 @@ public class LogoTopBar extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_logo_top_bar, container, false);
+    }
+
+    public void onClickEditarDados(View v){
+        startActivity(new Intent(getActivity(), EditarDadosUtilizador.class));
     }
 }

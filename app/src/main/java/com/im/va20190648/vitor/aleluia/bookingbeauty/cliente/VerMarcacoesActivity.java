@@ -18,8 +18,10 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.Marcacao;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.esteticista.VerMarcacoesTrabalhadorActivity;
-import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.MyAdapter;
+//TODO: Gonçalo dá fix nisto
+//import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.MyAdapter;
 
 import java.util.ArrayList;
 
@@ -28,7 +30,9 @@ public class VerMarcacoesActivity extends AppCompatActivity {
     TextView vazio;
     RecyclerView recyclerView;
     ArrayList<Marcacao> marcacoes;
-    MyAdapter myAdapter;
+
+    //TODO: Gonçalo dá fix nisto
+    //MyAdapter myAdapter;
 
     private FirebaseFirestore db;
 
@@ -51,9 +55,11 @@ public class VerMarcacoesActivity extends AppCompatActivity {
         vazio = findViewById(R.id.vazio);
 
         marcacoes = new ArrayList<Marcacao>();
-        myAdapter = new MyAdapter(VerMarcacoesActivity.this, marcacoes);
+        //TODO: Gonçalo dá fix nisto
+        //myAdapter = new MyAdapter(VerMarcacoesActivity.this, marcacoes);
 
-        recyclerView.setAdapter(myAdapter);
+        //TODO: Gonçalo dá fix nisto
+        //recyclerView.setAdapter(myAdapter);
 
         db.collection("marcacoes").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -62,9 +68,11 @@ public class VerMarcacoesActivity extends AppCompatActivity {
                     for (DocumentSnapshot documentSnapshot : task.getResult().getDocuments()) {
                         String documentId = documentSnapshot.getId();
                         Marcacao marcacao = documentSnapshot.toObject(Marcacao.class);
-                        marcacao.setDocumentId(documentId);
+                        //TODO: Gonçalo dá fix nisto
+                        //marcacao.setDocumentId(documentId);
                         marcacoes.add(marcacao);
-                        myAdapter.notifyDataSetChanged();
+                        //TODO: Gonçalo dá fix nisto
+                        //myAdapter.notifyDataSetChanged();
                     }
                     if (task.getResult().isEmpty()) {
                         vazio.setText("Está um pouco vazio por aqui, faça mais marcações!!!");

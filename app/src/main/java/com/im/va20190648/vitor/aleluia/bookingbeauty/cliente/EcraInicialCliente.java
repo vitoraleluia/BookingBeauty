@@ -28,4 +28,12 @@ public class EcraInicialCliente extends AppCompatActivity {
         });
     }
 
+    public void onClickMarcacoes(View v){
+        startActivity(new Intent(EcraInicialCliente.this, VerMarcacoesActivity.class));
+    }
+
+    public void onClickSobre(View v){
+        //TODO: Depois do Tiago implementar esta classe
+    }
+
 }

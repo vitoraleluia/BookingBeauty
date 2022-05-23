@@ -17,7 +17,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
 
 import java.util.ArrayList;
-
+/*
 public class AdapterTrabalhador extends RecyclerView.Adapter<AdapterTrabalhador.ViewHolderTrabalhador> {
 
     Context context;
@@ -143,3 +143,4 @@ public class AdapterTrabalhador extends RecyclerView.Adapter<AdapterTrabalhador.
 
 
 }
+*/

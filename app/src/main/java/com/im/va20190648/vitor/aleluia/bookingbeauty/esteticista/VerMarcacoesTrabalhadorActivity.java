@@ -18,7 +18,9 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
-import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.AdapterTrabalhador;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.cliente.EditarDadosUtilizador;
+//TODO: Gonçalo dá fix nisto
+//import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.AdapterTrabalhador;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.Marcacao;
 
 import java.util.ArrayList;
@@ -27,7 +29,8 @@ public class VerMarcacoesTrabalhadorActivity extends AppCompatActivity {
 
     TextView vazio;
     RecyclerView recyclerView;
-    AdapterTrabalhador adapterTrabalhador;
+    //TODO: Gonçalo dá fix nisto
+    //AdapterTrabalhador adapterTrabalhador;
     ArrayList<Marcacao> marcacoes;
     private FirebaseFirestore db;
 
@@ -50,9 +53,11 @@ public class VerMarcacoesTrabalhadorActivity extends AppCompatActivity {
         vazio = findViewById(R.id.vazio);
 
         marcacoes = new ArrayList<Marcacao>();
-        adapterTrabalhador = new AdapterTrabalhador(VerMarcacoesTrabalhadorActivity.this, marcacoes);
+        //TODO: Gonçalo
+        //adapterTrabalhador = new AdapterTrabalhador(VerMarcacoesTrabalhadorActivity.this, marcacoes);
 
-        recyclerView.setAdapter(adapterTrabalhador);
+        //TODO: Gonçalo dá fix nisto
+        //recyclerView.setAdapter(adapterTrabalhador);
 
         db.collection("marcacoes").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -61,9 +66,11 @@ public class VerMarcacoesTrabalhadorActivity extends AppCompatActivity {
                     for (DocumentSnapshot documentSnapshot : task.getResult().getDocuments()) {
                         String documentId = documentSnapshot.getId();
                         Marcacao marcacao = documentSnapshot.toObject(Marcacao.class);
-                        marcacao.setDocumentId(documentId);
+                        //TODO: Gonçalo dá fix nisto
+                        //marcacao.setDocumentId(documentId);
                         marcacoes.add(marcacao);
-                        adapterTrabalhador.notifyDataSetChanged();
+                        //TODO: Gonçalo dá fix nisto
+                        //adapterTrabalhador.notifyDataSetChanged();
                     }
                     if (task.getResult().isEmpty()) {
                         vazio.setText("Não há marcações a apresentar!!!");
@@ -74,7 +81,7 @@ public class VerMarcacoesTrabalhadorActivity extends AppCompatActivity {
     }
 
     public void verDadosUtilizador(View v) {
-        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        Intent i = new Intent(getApplicationContext(), EditarDadosUtilizador.class);
         startActivity(i);
     }
 }

@@ -17,14 +17,15 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
 
 import java.util.ArrayList;
-
+//TODO: Gonçalo dá fix nisto
+/*
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
     Context context;
-    ArrayList<com.im.va20190648.vitor.aleluia.bookingbeauty.Marcacao> marcacoes;
+    ArrayList<Marcacao> marcacoes;
     FirebaseFirestore firebaseFirestore;
 
-    public MyAdapter(Context context, ArrayList<com.im.va20190648.vitor.aleluia.bookingbeauty.Marcacao> marcacoes) {
+    public MyAdapter(Context context, ArrayList<Marcacao> marcacoes) {
         this.context = context;
         this.marcacoes = marcacoes;
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -41,6 +42,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
     @Override
     public void onBindViewHolder(@NonNull MyAdapter.MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
+
 
         Marcacao marcacao = marcacoes.get(position);
 
@@ -95,4 +97,4 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
     }
 
-}
+}*/

@@ -17,6 +17,7 @@
             android:layout_height="40dp"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:onClick="onClickEditardadosUtilizador"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:srcCompat="@drawable/utilizador" />

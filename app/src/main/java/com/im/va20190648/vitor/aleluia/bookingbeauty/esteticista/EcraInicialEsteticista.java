@@ -20,4 +20,12 @@ public class EcraInicialEsteticista extends AppCompatActivity {
         Intent servicos = new Intent(this, Servicos.class);
         startActivity(servicos);
     }
+
+    public void onClickMarcacoes(View v){
+        startActivity(new Intent(EcraInicialEsteticista.this, VerMarcacoesTrabalhadorActivity.class));
+    }
+
+    public void onClickAgenda(View v){
+        //TODO: Depois de implementar a agenda
+    }
 }
