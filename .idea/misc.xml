@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+<<<<<<< HEAD
         <entry key="..\:/Users/VitorAleluia/AndroidStudioProjects/BookingBeauty/app/src/main/res/layout/activity_adicionar_servico.xml" value="0.22" />
         <entry key="..\:/Users/VitorAleluia/AndroidStudioProjects/BookingBeauty/app/src/main/res/layout/activity_ecra_inicial_cliente.xml" value="0.33" />
         <entry key="..\:/Users/VitorAleluia/AndroidStudioProjects/BookingBeauty/app/src/main/res/layout/activity_ecra_inicial_esteticista.xml" value="0.33" />
@@ -10,6 +11,11 @@
         <entry key="..\:/Users/VitorAleluia/AndroidStudioProjects/BookingBeauty/app/src/main/res/layout/activity_editar_eliminar_servico.xml" value="0.33" />
         <entry key="..\:/Users/VitorAleluia/AndroidStudioProjects/BookingBeauty/app/src/main/res/layout/activity_fazer_marcacao_cliente.xml" value="0.25" />
         <entry key="..\:/Users/VitorAleluia/AndroidStudioProjects/BookingBeauty/app/src/main/res/layout/activity_login.xml" value="0.33" />
+=======
+        <entry key="..\:/Users/VitorAleluia/AndroidStudioProjects/BookingBeauty/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1995" />
+        <entry key="..\:/Users/VitorAleluia/AndroidStudioProjects/BookingBeauty/app/src/main/res/layout/activity_ecra_inicial_cliente.xml" value="0.25" />
+        <entry key="..\:/Users/VitorAleluia/AndroidStudioProjects/BookingBeauty/app/src/main/res/layout/activity_ecra_inicial_esteticista.xml" value="0.25" />
+>>>>>>> origin/ecraInicial
         <entry key="..\:/Users/VitorAleluia/AndroidStudioProjects/BookingBeauty/app/src/main/res/layout/activity_main.xml" value="0.5" />
 <<<<<<< HEAD
         <entry key="..\:/Users/VitorAleluia/AndroidStudioProjects/BookingBeauty/app/src/main/res/layout/activity_principal.xml" value="0.21458333333333332" />

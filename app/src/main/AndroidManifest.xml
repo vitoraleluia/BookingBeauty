@@ -22,6 +22,12 @@
             android:name=".RegistoActivity"
             android:exported="false" />
         <activity
+            android:name=".EcraInicialEsteticista"
+            android:exported="false" />
+        <activity
+            android:name=".EcraInicialCliente"
+            android:exported="false" />
+        <activity
             android:name=".LoginActivity"
             android:exported="true">
             <intent-filter>
