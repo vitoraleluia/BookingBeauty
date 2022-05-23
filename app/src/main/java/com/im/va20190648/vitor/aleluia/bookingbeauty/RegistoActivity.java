@@ -18,7 +18,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.im.va20190648.vitor.aleluia.bookingbeauty.modelo.Utilizador;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.Utilizador;
 
 import java.util.HashMap;
 

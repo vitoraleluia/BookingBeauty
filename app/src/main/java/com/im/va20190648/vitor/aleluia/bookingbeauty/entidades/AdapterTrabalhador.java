@@ -1,4 +1,4 @@
-package com.im.va20190648.vitor.aleluia.bookingbeauty;
+package com.im.va20190648.vitor.aleluia.bookingbeauty.entidades;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
@@ -14,17 +14,18 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
 
 import java.util.ArrayList;
 
 public class AdapterTrabalhador extends RecyclerView.Adapter<AdapterTrabalhador.ViewHolderTrabalhador> {
 
     Context context;
-    ArrayList<Marcacao> marcacoes;
-    ArrayList<Marcacao> marcacoesTrabalhadores;
+    ArrayList<com.im.va20190648.vitor.aleluia.bookingbeauty.Marcacao> marcacoes;
+    ArrayList<com.im.va20190648.vitor.aleluia.bookingbeauty.Marcacao> marcacoesTrabalhadores;
     FirebaseFirestore firebaseFirestore;
 
-    public AdapterTrabalhador(Context context, ArrayList<Marcacao> marcacoes) {
+    public AdapterTrabalhador(Context context, ArrayList<com.im.va20190648.vitor.aleluia.bookingbeauty.Marcacao> marcacoes) {
         this.context = context;
         this.marcacoes = marcacoes;
         firebaseFirestore = FirebaseFirestore.getInstance();

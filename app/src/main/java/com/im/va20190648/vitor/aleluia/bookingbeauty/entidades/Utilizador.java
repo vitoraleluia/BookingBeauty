@@ -1,7 +1,6 @@
-package com.im.va20190648.vitor.aleluia.bookingbeauty.modelo;
+package com.im.va20190648.vitor.aleluia.bookingbeauty.entidades;
 
 import com.google.firebase.database.DatabaseReference;
-import com.im.va20190648.vitor.aleluia.bookingbeauty.config.ConfiguracaoFirebase;
 
 public class Utilizador {
     private String id;

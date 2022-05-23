@@ -10,13 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BookingBeauty">
         <activity
-            android:name=".EditarDadosUtilizador"
+            android:name=".cliente.EditarDadosUtilizador"
             android:exported="false" />
         <activity
-            android:name=".VerMarcacoesTrabalhadorActivity"
+            android:name=".esteticista.VerMarcacoesTrabalhadorActivity"
             android:exported="false" />
         <activity
-            android:name=".VerMarcacoesActivity"
+            android:name=".cliente.VerMarcacoesActivity"
             android:exported="false" />
         <activity
             android:name=".RegistoActivity"

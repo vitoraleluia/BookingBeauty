@@ -1,4 +1,4 @@
-package com.im.va20190648.vitor.aleluia.bookingbeauty;
+package com.im.va20190648.vitor.aleluia.bookingbeauty.cliente;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Button;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -18,15 +17,19 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.esteticista.VerMarcacoesTrabalhadorActivity;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.MyAdapter;
 
 import java.util.ArrayList;
 
-public class VerMarcacoesTrabalhadorActivity extends AppCompatActivity {
+public class VerMarcacoesActivity extends AppCompatActivity {
 
     TextView vazio;
     RecyclerView recyclerView;
-    AdapterTrabalhador adapterTrabalhador;
     ArrayList<Marcacao> marcacoes;
+    MyAdapter myAdapter;
+
     private FirebaseFirestore db;
 
     @Override
@@ -37,7 +40,7 @@ public class VerMarcacoesTrabalhadorActivity extends AppCompatActivity {
         this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
 
-        setContentView(R.layout.activity_ver_marcacoes_trabalhador);
+        setContentView(R.layout.activity_ver_marcacoes);
 
         recyclerView = findViewById(R.id.recyclerView);
         recyclerView.setHasFixedSize(true);
@@ -48,9 +51,9 @@ public class VerMarcacoesTrabalhadorActivity extends AppCompatActivity {
         vazio = findViewById(R.id.vazio);
 
         marcacoes = new ArrayList<Marcacao>();
-        adapterTrabalhador = new AdapterTrabalhador(VerMarcacoesTrabalhadorActivity.this, marcacoes);
+        myAdapter = new MyAdapter(VerMarcacoesActivity.this, marcacoes);
 
-        recyclerView.setAdapter(adapterTrabalhador);
+        recyclerView.setAdapter(myAdapter);
 
         db.collection("marcacoes").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -61,10 +64,10 @@ public class VerMarcacoesTrabalhadorActivity extends AppCompatActivity {
                         Marcacao marcacao = documentSnapshot.toObject(Marcacao.class);
                         marcacao.setDocumentId(documentId);
                         marcacoes.add(marcacao);
-                        adapterTrabalhador.notifyDataSetChanged();
+                        myAdapter.notifyDataSetChanged();
                     }
                     if (task.getResult().isEmpty()) {
-                        vazio.setText("Não há marcações a apresentar!!!");
+                        vazio.setText("Está um pouco vazio por aqui, faça mais marcações!!!");
                     }
                 }
             }
@@ -72,7 +75,7 @@ public class VerMarcacoesTrabalhadorActivity extends AppCompatActivity {
     }
 
     public void verDadosUtilizador(View v) {
-        Intent i = new Intent(getApplicationContext(), MainActivity.class);
+        Intent i = new Intent(getApplicationContext(), VerMarcacoesTrabalhadorActivity.class);
         startActivity(i);
     }
 }

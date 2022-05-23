@@ -1,4 +1,4 @@
-package com.im.va20190648.vitor.aleluia.bookingbeauty;
+package com.im.va20190648.vitor.aleluia.bookingbeauty.cliente;
 
 
 import androidx.annotation.Nullable;
@@ -21,6 +21,8 @@ import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.ListenerRegistration;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.LoginActivity;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
 
 public class EditarDadosUtilizador extends AppCompatActivity {
 

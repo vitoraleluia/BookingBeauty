@@ -1,4 +1,4 @@
-package com.im.va20190648.vitor.aleluia.bookingbeauty.config;
+package com.im.va20190648.vitor.aleluia.bookingbeauty.entidades;
 
 import android.provider.ContactsContract;
 
