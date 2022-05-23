@@ -40,9 +40,8 @@ public class LoginActivity extends AppCompatActivity {
         textView = findViewById(R.id.textView);
 
         //TESTE
-        gotoregisto = findViewById(R.id.gotoregisto);
 
-        gotoregisto.setOnClickListener(new View.OnClickListener() {
+        textView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startActivity(new Intent(LoginActivity.this, RegistoActivity.class));
@@ -51,12 +50,12 @@ public class LoginActivity extends AppCompatActivity {
 
         //FIM TESTE
 
-       // SpannableString ss = new SpannableString("Ainda não possui uma conta? Efetue o seu registo AQUI");
+        SpannableString ss = new SpannableString("Ainda não possui uma conta? Efetue o seu registo AQUI");
 
 
-       // ss.setSpan(new CustomClickableSpan(),0,50, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-       // textView.setText(ss);
-       // textView.setMovementMethod(LinkMovementMethod.getInstance());
+        ss.setSpan(new CustomClickableSpan(),0,50, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        textView.setText(ss);
+        textView.setMovementMethod(LinkMovementMethod.getInstance());
 
         btLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -92,15 +91,15 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-  //  public class CustomClickableSpan {
-  //      public void onClick(View textView){
-  //          startActivity(new Intent(LoginActivity.this, RegistoActivity.class));
-  //      }
+    public class CustomClickableSpan {
+        public void onClick(View textView){
+            startActivity(new Intent(LoginActivity.this, RegistoActivity.class));
+        }
 
-  //     public void updateDrawState(TextPaint ds){
-  //          ds.setColor(Color.MAGENTA);
-  //          ds.setUnderlineText(false);
-  //     }
+       public void updateDrawState(TextPaint ds){
+            ds.setColor(Color.MAGENTA);
+            ds.setUnderlineText(false);
+       }
 
-  //  }
+    }
 }
