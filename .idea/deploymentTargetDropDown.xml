@@ -7,11 +7,19 @@
         <deviceKey>
           <Key>
             <type value="VIRTUAL_DEVICE_PATH" />
+<<<<<<< HEAD
             <value value="C:\Users\GoncaloMartins\.android\avd\Pixel_3a_API_30_1.avd" />
+=======
+            <value value="C:\Users\tiago\.android\avd\Pixel_3a_API_28.avd" />
+>>>>>>> login
           </Key>
         </deviceKey>
       </Target>
     </targetSelectedWithDropDown>
+<<<<<<< HEAD
     <timeTargetWasSelectedWithDropDown value="2022-05-02T17:35:50.755800300Z" />
+=======
+    <timeTargetWasSelectedWithDropDown value="2022-04-27T17:04:29.434778Z" />
+>>>>>>> login
   </component>
 </project>
