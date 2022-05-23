@@ -30,4 +30,7 @@
     <string name="BB_Selecione">Selecione os serviços</string>
     <string name="BB_Total">Total: 0€</string>
     <string name="BB_Prosseguir">Prosseguir</string>
+    <string name="BB_SelecioneDia">Selecione o dia</string>
+    <string name="BB_SelecioneHora">Selecione a hora</string>
+    <string name="BB_ConcluirMarcacao">Concluri Marcação</string>
 </resources>

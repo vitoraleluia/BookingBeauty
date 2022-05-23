@@ -25,6 +25,9 @@
             android:name=".esteticista.EcraInicialEsteticista"
             android:exported="false" />
         <activity
+            android:name=".cliente.FazerMarcacaoCliente"
+            android:exported="false" />
+        <activity
             android:name=".cliente.SelecionarServicos"
             android:exported="false" />
         <activity
