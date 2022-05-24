@@ -8,22 +8,25 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.EstadoMarcacao;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.Marcacao;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.MyAdapter;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.Servico;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.esteticista.VerMarcacoesTrabalhadorActivity;
-//TODO: Gonçalo dá fix nisto
-//import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.MyAdapter;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
+
 
 public class VerMarcacoesActivity extends AppCompatActivity {
 
@@ -31,18 +34,15 @@ public class VerMarcacoesActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     ArrayList<Marcacao> marcacoes;
 
-    //TODO: Gonçalo dá fix nisto
-    //MyAdapter myAdapter;
+    Date dataF, dataIni;
+
+    MyAdapter myAdapter;
 
     private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();
 
         setContentView(R.layout.activity_ver_marcacoes);
 
@@ -55,11 +55,10 @@ public class VerMarcacoesActivity extends AppCompatActivity {
         vazio = findViewById(R.id.vazio);
 
         marcacoes = new ArrayList<Marcacao>();
-        //TODO: Gonçalo dá fix nisto
-        //myAdapter = new MyAdapter(VerMarcacoesActivity.this, marcacoes);
 
-        //TODO: Gonçalo dá fix nisto
-        //recyclerView.setAdapter(myAdapter);
+        myAdapter = new MyAdapter(VerMarcacoesActivity.this, marcacoes);
+
+        recyclerView.setAdapter(myAdapter);
 
         db.collection("marcacoes").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -67,12 +66,21 @@ public class VerMarcacoesActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     for (DocumentSnapshot documentSnapshot : task.getResult().getDocuments()) {
                         String documentId = documentSnapshot.getId();
-                        Marcacao marcacao = documentSnapshot.toObject(Marcacao.class);
-                        //TODO: Gonçalo dá fix nisto
-                        //marcacao.setDocumentId(documentId);
+
+                        Timestamp timeIni = (Timestamp) documentSnapshot.get("dataInicio");
+                        dataIni=timeIni.toDate();
+
+                        Timestamp timeFim = (Timestamp) documentSnapshot.get("dataFim");
+                        dataF=timeFim.toDate();
+
+                        ArrayList<Servico> serv = (ArrayList<Servico>) documentSnapshot.get("servicos");
+
+                        Marcacao marcacao = new Marcacao(dataIni, dataF, Integer.parseInt(documentSnapshot.get("preco").toString()), serv, EstadoMarcacao.valueOf(documentSnapshot.get("estado").toString()));
+
+                        marcacao.setDocumentId(documentId);
                         marcacoes.add(marcacao);
-                        //TODO: Gonçalo dá fix nisto
-                        //myAdapter.notifyDataSetChanged();
+
+                        myAdapter.notifyDataSetChanged();
                     }
                     if (task.getResult().isEmpty()) {
                         vazio.setText("Está um pouco vazio por aqui, faça mais marcações!!!");
@@ -84,11 +92,6 @@ public class VerMarcacoesActivity extends AppCompatActivity {
 
     public void verDadosUtilizador(View v) {
         Intent i = new Intent(getApplicationContext(), VerMarcacoesTrabalhadorActivity.class);
-        startActivity(i);
-    }
-
-    public void onClickEditarDados(View v){
-        Intent i = new Intent(this, EditarDadosUtilizador.class);
         startActivity(i);
     }
 }

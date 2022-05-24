@@ -8,6 +8,8 @@ public class Servico implements Serializable {
     private Integer preco;
     private Integer duracao;
 
+    public Servico() {
+    }
 
     //Construtor para editar/listar os servicos existentes
     public Servico(String id, String nome, Integer preco, Integer duracao) {

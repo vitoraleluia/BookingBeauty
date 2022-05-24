@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -21,26 +22,26 @@ import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.cliente.EditarDadosUtilizador;
 //TODO: Gonçalo dá fix nisto
 //import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.AdapterTrabalhador;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.AdapterTrabalhador;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.EstadoMarcacao;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.Marcacao;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.Servico;
 
 import java.util.ArrayList;
+import java.util.Date;
 
 public class VerMarcacoesTrabalhadorActivity extends AppCompatActivity {
 
     TextView vazio;
     RecyclerView recyclerView;
-    //TODO: Gonçalo dá fix nisto
-    //AdapterTrabalhador adapterTrabalhador;
+    AdapterTrabalhador adapterTrabalhador;
     ArrayList<Marcacao> marcacoes;
+    Date dataF, dataIni;
     private FirebaseFirestore db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();
 
         setContentView(R.layout.activity_ver_marcacoes_trabalhador);
 
@@ -53,11 +54,10 @@ public class VerMarcacoesTrabalhadorActivity extends AppCompatActivity {
         vazio = findViewById(R.id.vazio);
 
         marcacoes = new ArrayList<Marcacao>();
-        //TODO: Gonçalo
-        //adapterTrabalhador = new AdapterTrabalhador(VerMarcacoesTrabalhadorActivity.this, marcacoes);
 
-        //TODO: Gonçalo dá fix nisto
-        //recyclerView.setAdapter(adapterTrabalhador);
+        adapterTrabalhador = new AdapterTrabalhador(VerMarcacoesTrabalhadorActivity.this, marcacoes);
+
+        recyclerView.setAdapter(adapterTrabalhador);
 
         db.collection("marcacoes").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
@@ -65,12 +65,21 @@ public class VerMarcacoesTrabalhadorActivity extends AppCompatActivity {
                 if (task.isSuccessful()) {
                     for (DocumentSnapshot documentSnapshot : task.getResult().getDocuments()) {
                         String documentId = documentSnapshot.getId();
-                        Marcacao marcacao = documentSnapshot.toObject(Marcacao.class);
-                        //TODO: Gonçalo dá fix nisto
-                        //marcacao.setDocumentId(documentId);
+
+                        Timestamp timeIni = (Timestamp) documentSnapshot.get("dataInicio");
+                        dataIni=timeIni.toDate();
+
+                        Timestamp timeFim = (Timestamp) documentSnapshot.get("dataFim");
+                        dataF=timeFim.toDate();
+
+                        ArrayList<Servico> serv = (ArrayList<Servico>) documentSnapshot.get("servicos");
+
+                        Marcacao marcacao = new Marcacao(dataIni, dataF, Integer.parseInt(documentSnapshot.get("preco").toString()), serv, EstadoMarcacao.valueOf(documentSnapshot.get("estado").toString()));
+
+
+                        marcacao.setDocumentId(documentId);
                         marcacoes.add(marcacao);
-                        //TODO: Gonçalo dá fix nisto
-                        //adapterTrabalhador.notifyDataSetChanged();
+                        adapterTrabalhador.notifyDataSetChanged();
                     }
                     if (task.getResult().isEmpty()) {
                         vazio.setText("Não há marcações a apresentar!!!");

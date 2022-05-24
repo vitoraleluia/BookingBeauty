@@ -13,19 +13,25 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-/*
+import java.util.List;
+import java.util.Map;
+
 public class AdapterTrabalhador extends RecyclerView.Adapter<AdapterTrabalhador.ViewHolderTrabalhador> {
 
     Context context;
-    ArrayList<com.im.va20190648.vitor.aleluia.bookingbeauty.Marcacao> marcacoes;
-    ArrayList<com.im.va20190648.vitor.aleluia.bookingbeauty.Marcacao> marcacoesTrabalhadores;
+    String serv = "";
+    ArrayList<String> nomes = new ArrayList<String >();
+    ArrayList<Marcacao> marcacoes;
+    ArrayList<Marcacao> marcacoesTrabalhadores = new ArrayList<Marcacao>();
     FirebaseFirestore firebaseFirestore;
 
-    public AdapterTrabalhador(Context context, ArrayList<com.im.va20190648.vitor.aleluia.bookingbeauty.Marcacao> marcacoes) {
+    public AdapterTrabalhador(Context context, ArrayList<Marcacao> marcacoes) {
         this.context = context;
         this.marcacoes = marcacoes;
         firebaseFirestore = FirebaseFirestore.getInstance();
@@ -45,25 +51,51 @@ public class AdapterTrabalhador extends RecyclerView.Adapter<AdapterTrabalhador.
 
         Marcacao marcacao = marcacoes.get(position);
 
-        //holder.nomeM.setText(("Aqui vai aparecer o nome"));
-        holder.dataM.setText(marcacao.data);
-        holder.horaInicioM.setText(marcacao.horaInicio);
-        holder.horaFimM.setText(marcacao.horaFim);
-        holder.precoM.setText(String.valueOf(marcacao.preco));
-        holder.servicosM.setText(marcacao.servicos);
-        holder.estadoM.setText(marcacao.estado);
+        FirebaseFirestore.getInstance()
+                .collection("marcacoes")
+                .document(marcacoes.get(position).getDocumentId())
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        List<Map<String, Object>> groups = (List<Map<String,Object>>) task.getResult().get("servicos");
+                        for(Map<String, Object> group : groups) {
+                            String name= group.get("nome").toString();
+                            nomes.add(name);
+                            serv+= name + ";";
+                            holder.servicosM.setText(serv);
+                        }
+                        serv="";
+                        SimpleDateFormat hora = new SimpleDateFormat("HH:mm");
+                        String horaInicio = hora.format(marcacao.getDataInicio());
+                        String horaFim = hora.format(marcacao.getDataFim());
+                        SimpleDateFormat data = new SimpleDateFormat("dd/MM/yyyy");
+                        String dataInicio = data.format(marcacao.getDataInicio());
+                        String dataFim = data.format(marcacao.getDataFim());
+
+                        //holder.nomeM.setText(("Aqui vai aparecer o nome"));
+                        holder.dataM.setText(dataInicio);
+                        holder.horaInicioM.setText(horaInicio);
+                        holder.horaFimM.setText(horaFim);
+                        holder.precoM.setText(String.valueOf(marcacao.getPreco()));
+                        holder.estadoM.setText(marcacao.getEstado().toString());
+                    }
+                });
+
+
+
 
         holder.apagar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 firebaseFirestore.collection("marcacoes")
                         .document(marcacoes.get(position).getDocumentId())
-                        .update("estado", "Marcação Rejeitada")
+                        .update("estado", EstadoMarcacao.REJEITADA)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful()){
-                                    //marcacoes.remove(marcacao);
+                                    marcacoes.remove(marcacao);
                                     notifyDataSetChanged();
                                 }
                             }
@@ -75,6 +107,7 @@ public class AdapterTrabalhador extends RecyclerView.Adapter<AdapterTrabalhador.
         holder.adicionar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                marcacao.setEstado(EstadoMarcacao.VALIDADA);
                 firebaseFirestore.collection("marcacoesTrabalhadores")
                         .document(marcacoes.get(position).getDocumentId())
                         .set(marcacao)
@@ -83,33 +116,21 @@ public class AdapterTrabalhador extends RecyclerView.Adapter<AdapterTrabalhador.
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful()){
                                     marcacoesTrabalhadores.add(marcacao);
-                                }
-                            }
-                        });
-                firebaseFirestore.collection("marcacoesTrabalhadores")
-                        .document(marcacoes.get(position).getDocumentId())
-                        .update("estado", "Marcação Aceite")
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if(task.isSuccessful()){
-                                   notifyDataSetChanged();
+                                    notifyDataSetChanged();
                                 }
                             }
                         });
                 firebaseFirestore.collection("marcacoes")
                         .document(marcacoes.get(position).getDocumentId())
-                        .update("estado", "Marcação Aceite")
+                        .update("estado", EstadoMarcacao.VALIDADA)
                         .addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful()){
-                                    //marcacoes.remove(marcacao);
-                                    notifyDataSetChanged();
+                                    return;
                                 }
                             }
                         });
-
             }
         });
 
@@ -143,4 +164,4 @@ public class AdapterTrabalhador extends RecyclerView.Adapter<AdapterTrabalhador.
 
 
 }
-*/
+

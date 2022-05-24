@@ -20,6 +20,10 @@ public class Marcacao {
     private Integer preco;
     private ArrayList<Servico> servicos;
     private Enum estado;
+    private String documentId;
+
+    public Marcacao() {
+    }
 
     //TODO: Adicionar utilizador para a marcacao
     public Marcacao(Date dataInicio, Date dataFim, Integer preco, ArrayList<Servico> servicos, Enum estado) {
@@ -53,6 +57,34 @@ public class Marcacao {
 
     public Enum getEstado() {
         return estado;
+    }
+
+    public String getDocumentId() {
+        return documentId;
+    }
+
+    public void setDocumentId(String documentId) {
+        this.documentId = documentId;
+    }
+
+    public void setDataInicio(Date dataInicio) {
+        this.dataInicio = dataInicio;
+    }
+
+    public void setDataFim(Date dataFim) {
+        this.dataFim = dataFim;
+    }
+
+    public void setPreco(Integer preco) {
+        this.preco = preco;
+    }
+
+    public void setServicos(ArrayList<Servico> servicos) {
+        this.servicos = servicos;
+    }
+
+    public void setEstado(Enum estado) {
+        this.estado = estado;
     }
 
     @Override
