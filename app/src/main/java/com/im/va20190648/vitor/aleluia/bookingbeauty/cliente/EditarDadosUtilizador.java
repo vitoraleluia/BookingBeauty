@@ -43,10 +43,6 @@ public class EditarDadosUtilizador extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        requestWindowFeature(Window.FEATURE_NO_TITLE);
-        this.getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN, WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();
-
         setContentView(R.layout.activity_editar_dados_utilizador);
 
         doc = db.collection("utilizadores").document(mAuth.getCurrentUser().getEmail().toString());

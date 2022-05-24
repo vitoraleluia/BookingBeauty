@@ -36,4 +36,9 @@ public class EcraInicialCliente extends AppCompatActivity {
         //TODO: Depois do Tiago implementar esta classe
     }
 
+    public void onClickEditarDados(View v){
+        Intent i = new Intent(EcraInicialCliente.this, EditarDadosUtilizador.class);
+        startActivity(i);
+    }
+
 }

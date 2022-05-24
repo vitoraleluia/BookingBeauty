@@ -84,4 +84,9 @@ public class VerMarcacoesTrabalhadorActivity extends AppCompatActivity {
         Intent i = new Intent(getApplicationContext(), EditarDadosUtilizador.class);
         startActivity(i);
     }
+
+    public void onClickEditarDados(View v){
+        Intent i = new Intent(this, EditarDadosUtilizador.class);
+        startActivity(i);
+    }
 }
