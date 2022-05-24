@@ -28,6 +28,7 @@ import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.Marcacao;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.Servico;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Date;
 
 public class VerMarcacoesTrabalhadorActivity extends AppCompatActivity {
@@ -59,7 +60,7 @@ public class VerMarcacoesTrabalhadorActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(adapterTrabalhador);
 
-        db.collection("marcacoes").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        db.collection("marcacoes").whereNotIn("estado", Arrays.asList(EstadoMarcacao.VALIDADA, EstadoMarcacao.REJEITADA)).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
