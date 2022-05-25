@@ -77,7 +77,6 @@ public class VerMarcacoesTrabalhadorActivity extends AppCompatActivity {
 
                         Marcacao marcacao = new Marcacao(dataIni, dataF, Integer.parseInt(documentSnapshot.get("preco").toString()), serv, EstadoMarcacao.valueOf(documentSnapshot.get("estado").toString()));
 
-
                         marcacao.setDocumentId(documentId);
                         marcacoes.add(marcacao);
                         adapterTrabalhador.notifyDataSetChanged();
