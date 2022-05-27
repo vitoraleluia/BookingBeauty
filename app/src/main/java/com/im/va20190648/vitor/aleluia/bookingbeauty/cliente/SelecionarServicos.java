@@ -112,4 +112,9 @@ public class SelecionarServicos extends AppCompatActivity implements ListaServic
         marcacoes.putExtra("servicosSelecionados",servicosSelecionados);
         startActivity(marcacoes);
     }
+
+    public void onClickEditarDados(View v){
+        Intent i = new Intent(this, EditarDadosUtilizador.class);
+        startActivity(i);
+    }
 }

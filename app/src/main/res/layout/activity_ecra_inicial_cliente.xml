@@ -7,7 +7,7 @@
     tools:context=".cliente.EcraInicialCliente">
 
     <TextView
-        android:id="@+id/textViewLogo"
+        android:id="@+id/textViewNomeCliente"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Olá, Utilizador."
@@ -27,7 +27,7 @@
         app:layout_constraintBottom_toTopOf="@+id/imageMarcacoes"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textViewLogo"
+        app:layout_constraintTop_toBottomOf="@+id/textViewNomeCliente"
         app:layout_constraintVertical_bias="0.86"
         app:shapeAppearanceOverlay="@style/roundedImageView"
         app:srcCompat="@drawable/servicos" />

@@ -3,6 +3,7 @@ package com.im.va20190648.vitor.aleluia.bookingbeauty.cliente;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -226,5 +227,10 @@ public class FazerMarcacaoCliente extends AppCompatActivity {
         marcacoesBaseDados.put("estado",m.getEstado());
 
         marcacoes.add(marcacoesBaseDados);
+    }
+
+    public void onClickEditarDados(View v){
+        Intent i = new Intent(this, EditarDadosUtilizador.class);
+        startActivity(i);
     }
 }

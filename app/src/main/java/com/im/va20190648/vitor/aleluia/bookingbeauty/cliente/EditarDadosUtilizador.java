@@ -133,4 +133,9 @@ public class EditarDadosUtilizador extends AppCompatActivity {
             }
         }
     }
+
+    public void onClickEditarDados(View v){
+        Intent i = new Intent(this, EditarDadosUtilizador.class);
+        startActivity(i);
+    }
 }
