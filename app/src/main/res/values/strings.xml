@@ -32,5 +32,8 @@
     <string name="BB_Prosseguir">Prosseguir</string>
     <string name="BB_SelecioneDia">Selecione o dia</string>
     <string name="BB_SelecioneHora">Selecione a hora</string>
-    <string name="BB_ConcluirMarcacao">Concluri Marcação</string>
+    <string name="BB_ConcluirMarcacao">Concluir Marcação</string>
+    <string name="BB_MarcacaoSucesso">A sua marcação foi feita com sucesso!</string>
+    <string name="BB_AdicionarCalendario">Adicionar marcação ao calendário</string>
+    <string name="BB_PaginaInicial">Página Inicial</string>
 </resources>

@@ -26,6 +26,7 @@ import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.AdapterTrabalhado
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.EstadoMarcacao;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.Marcacao;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.Servico;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.Utilizador;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -75,7 +76,12 @@ public class VerMarcacoesTrabalhadorActivity extends AppCompatActivity {
 
                         ArrayList<Servico> serv = (ArrayList<Servico>) documentSnapshot.get("servicos");
 
-                        Marcacao marcacao = new Marcacao(dataIni, dataF, Integer.parseInt(documentSnapshot.get("preco").toString()), serv, EstadoMarcacao.valueOf(documentSnapshot.get("estado").toString()));
+                        //TODO: Mostrar o nome do utilizador
+                        Utilizador u = new Utilizador();
+                        u.setNome(documentSnapshot.get("nome").toString());
+                        u.setEmail(documentSnapshot.get("email").toString());
+
+                        Marcacao marcacao = new Marcacao(u,dataIni, dataF, Integer.parseInt(documentSnapshot.get("preco").toString()), serv, EstadoMarcacao.valueOf(documentSnapshot.get("estado").toString()));
 
                         marcacao.setDocumentId(documentId);
                         marcacoes.add(marcacao);

@@ -15,7 +15,9 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
@@ -24,6 +26,7 @@ import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.EstadoMarcacao;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.Marcacao;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.Servico;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.Utilizador;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -50,10 +53,14 @@ public class FazerMarcacaoCliente extends AppCompatActivity {
     private FirebaseFirestore db;
     private CollectionReference marcacoes;
 
+    private FirebaseAuth auth;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_fazer_marcacao_cliente);
+
+        auth = FirebaseAuth.getInstance();
 
         //Obter os servicos selecionados pelo utilizador
         servicosSelecionados = (ArrayList<Servico>) getIntent().getSerializableExtra("servicosSelecionados");
@@ -185,7 +192,6 @@ public class FazerMarcacaoCliente extends AppCompatActivity {
     public void onclickMarcacao(View view){
         //Formatação da data selecionada para o formato de data
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-
         String dataString = dia + "/" + mes + "/" + ano + " " + spinner.getSelectedItem().toString();
 
         try {
@@ -215,11 +221,14 @@ public class FazerMarcacaoCliente extends AppCompatActivity {
 
         Log.d("TAG", "onclickMarcacao: " + dataSelecionada.toString() + " | data fim: " +dataFim.toString());
 
+        Utilizador cliente = getDadosCliente();
+
         //Criacao do objeto marcacao
-        Marcacao m = new Marcacao(dataSelecionada,dataFim,preco,servicosSelecionados, EstadoMarcacao.NAO_VALIDADA);
+        Marcacao m = new Marcacao(cliente,dataSelecionada,dataFim,preco,servicosSelecionados, EstadoMarcacao.NAO_VALIDADA);
         Map<String, Object> marcacoesBaseDados = new HashMap<>();
 
-        //TODO:Falta o utilizador
+        marcacoesBaseDados.put("email",cliente.getEmail());
+        marcacoesBaseDados.put("nome",cliente.getNome());
         marcacoesBaseDados.put("dataInicio",m.getDataInicio());
         marcacoesBaseDados.put("dataFim",m.getDataFim());
         marcacoesBaseDados.put("preco",m.getPreco());
@@ -227,6 +236,27 @@ public class FazerMarcacaoCliente extends AppCompatActivity {
         marcacoesBaseDados.put("estado",m.getEstado());
 
         marcacoes.add(marcacoesBaseDados);
+        Intent finalMarcacao = new Intent(this, FimMarcacao.class);
+        finalMarcacao.putExtra("marcacao", m);
+        startActivity(finalMarcacao);
+    }
+
+    private Utilizador getDadosCliente() {
+        Utilizador u = new Utilizador();
+        //Pesquisar pelos dados através do email
+        db.collection("utilizadores").document(auth.getCurrentUser().getEmail()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()){
+                    DocumentSnapshot result = task.getResult();
+                    u.setEmail(result.getString("e-mail"));
+                    u.setNome(result.getString("nome"));
+                    u.setNtelemovel(result.getString("telemovel"));
+                }
+            }
+        });
+
+        return u;
     }
 
     public void onClickEditarDados(View v){

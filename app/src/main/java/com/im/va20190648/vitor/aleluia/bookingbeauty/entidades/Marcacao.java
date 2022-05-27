@@ -1,9 +1,10 @@
 package com.im.va20190648.vitor.aleluia.bookingbeauty.entidades;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Marcacao {
+public class Marcacao implements Serializable {
     /*
      * Marcacao
      * Utilizador
@@ -15,7 +16,7 @@ public class Marcacao {
      * Estado (Por validar ou validada)
      */
 
-    //private Utilizador utilizador;
+    private Utilizador cliente;
     private Date dataInicio, dataFim;
     private Integer preco;
     private ArrayList<Servico> servicos;
@@ -26,7 +27,8 @@ public class Marcacao {
     }
 
     //TODO: Adicionar utilizador para a marcacao
-    public Marcacao(Date dataInicio, Date dataFim, Integer preco, ArrayList<Servico> servicos, Enum estado) {
+    public Marcacao(Utilizador cliente, Date dataInicio, Date dataFim, Integer preco, ArrayList<Servico> servicos, Enum estado) {
+        this.cliente = cliente;
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
         this.preco = preco;
@@ -37,6 +39,10 @@ public class Marcacao {
     public Marcacao(Date dataInicio, Date dataFim) {
         this.dataInicio = dataInicio;
         this.dataFim = dataFim;
+    }
+
+    public Utilizador getCliente() {
+        return cliente;
     }
 
     public Date getDataInicio() {

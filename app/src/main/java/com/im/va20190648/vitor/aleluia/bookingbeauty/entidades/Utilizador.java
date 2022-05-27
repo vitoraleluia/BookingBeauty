@@ -2,7 +2,9 @@ package com.im.va20190648.vitor.aleluia.bookingbeauty.entidades;
 
 import com.google.firebase.database.DatabaseReference;
 
-public class Utilizador {
+import java.io.Serializable;
+
+public class Utilizador implements Serializable {
     private String id;
     private String nome;
     private String email;
