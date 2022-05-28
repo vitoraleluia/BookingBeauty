@@ -61,7 +61,9 @@ public class VerMarcacoesTrabalhadorActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(adapterTrabalhador);
 
-        db.collection("marcacoes").whereNotIn("estado", Arrays.asList(EstadoMarcacao.VALIDADA, EstadoMarcacao.REJEITADA)).get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        db.collection("marcacoes")
+                .whereNotIn("estado", Arrays.asList(EstadoMarcacao.VALIDADA, EstadoMarcacao.REJEITADA))
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
@@ -79,7 +81,7 @@ public class VerMarcacoesTrabalhadorActivity extends AppCompatActivity {
                         //TODO: Mostrar o nome do utilizador
                         Utilizador u = new Utilizador();
                         u.setNome(documentSnapshot.get("nome").toString());
-                        u.setEmail(documentSnapshot.get("email").toString());
+                       // u.setEmail(documentSnapshot.get("email").toString());
 
                         Marcacao marcacao = new Marcacao(u,dataIni, dataF, Integer.parseInt(documentSnapshot.get("preco").toString()), serv, EstadoMarcacao.valueOf(documentSnapshot.get("estado").toString()));
 

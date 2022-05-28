@@ -66,6 +66,7 @@ public class AdapterTrabalhador extends RecyclerView.Adapter<AdapterTrabalhador.
                             holder.servicosM.setText(serv);
                         }
                         serv="";
+                        String nomeUtlizador = marcacao.getCliente().getNome();
                         SimpleDateFormat hora = new SimpleDateFormat("HH:mm");
                         String horaInicio = hora.format(marcacao.getDataInicio());
                         String horaFim = hora.format(marcacao.getDataFim());
@@ -73,7 +74,7 @@ public class AdapterTrabalhador extends RecyclerView.Adapter<AdapterTrabalhador.
                         String dataInicio = data.format(marcacao.getDataInicio());
                         String dataFim = data.format(marcacao.getDataFim());
 
-                        //holder.nomeM.setText(("Aqui vai aparecer o nome"));
+                        holder.nomeM.setText((nomeUtlizador));
                         holder.dataM.setText(dataInicio);
                         holder.horaInicioM.setText(horaInicio);
                         holder.horaFimM.setText(horaFim);
@@ -149,7 +150,7 @@ public class AdapterTrabalhador extends RecyclerView.Adapter<AdapterTrabalhador.
 
         public ViewHolderTrabalhador(@NonNull View itemView) {
             super(itemView);
-            //nomeM = itemView.findViewById(R.id.tvnomes);
+            nomeM = itemView.findViewById(R.id.tvnomes);
             dataM = itemView.findViewById(R.id.tvdata);
             horaInicioM = itemView.findViewById(R.id.tvhoraInicio);
             horaFimM = itemView.findViewById(R.id.tvhoraFim);

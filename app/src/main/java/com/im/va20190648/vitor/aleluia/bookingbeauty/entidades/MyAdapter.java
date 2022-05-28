@@ -14,15 +14,17 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QueryDocumentSnapshot;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-//TODO: Gonçalo dá fix nisto
 
 public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
@@ -31,6 +33,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
     FirebaseFirestore firebaseFirestore;
     String serv = "";
     ArrayList<String> nomes = new ArrayList<String >();
+    private FirebaseAuth auth= FirebaseAuth.getInstance();
 
     public MyAdapter(Context context, ArrayList<Marcacao> marcacoes) {
         this.context = context;
@@ -52,37 +55,31 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
         Marcacao marcacao = marcacoes.get(position);
 
-        FirebaseFirestore.getInstance().collection("marcacoes")
-                .document(marcacoes.get(position).getDocumentId())
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                List<Map<String, Object>> groups = (List<Map<String, Object>>) task.getResult().get("servicos");
-                for (Map<String, Object> group : groups) {
-                    String name = group.get("nome").toString();
-                    nomes.add(name);
-                    serv+=name + "; ";
-                    holder.servicosM.setText(serv);
+            firebaseFirestore.collection("marcacoes")
+                    .document(marcacoes.get(position).getDocumentId())
+                    .get()
+                    .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                        @Override
+                        public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            List<Map<String, Object>> groups = (List<Map<String, Object>>) task.getResult().get("servicos");
+                            for (Map<String, Object> group : groups) {
+                                String name = group.get("nome").toString();
+                                nomes.add(name);
+                                serv += name + "; ";
+                                holder.servicosM.setText(serv);
+                            }
+                            serv = "";
 
-                    Log.i("servicos", "getFleets: " + serv);
-                }
-                serv="";
+                            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+                            String dataInicio = simpleDateFormat.format(marcacao.getDataInicio());
+                            String dataFim = simpleDateFormat.format(marcacao.getDataFim());
 
-                SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-                String dataInicio = simpleDateFormat.format(marcacao.getDataInicio());
-                String dataFim = simpleDateFormat.format(marcacao.getDataFim());
-
-                holder.dataInicio.setText(dataInicio);
-                holder.dataFim.setText(dataFim);
-                holder.precoM.setText(String.valueOf(marcacao.getPreco()));
-
-                holder.estadoM.setText(marcacao.getEstado().toString());
-
-            }
-        });
-
-
+                            holder.dataInicio.setText(dataInicio);
+                            holder.dataFim.setText(dataFim);
+                            holder.precoM.setText(String.valueOf(marcacao.getPreco()) + " euros");
+                            holder.estadoM.setText(marcacao.getEstado().toString());
+                        }
+                    });
 
         holder.apagar.setOnClickListener(new View.OnClickListener() {
             @Override

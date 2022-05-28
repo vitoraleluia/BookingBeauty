@@ -87,8 +87,6 @@ public class EditarDadosUtilizador extends AppCompatActivity {
 
     public void logout(View v) {
         mAuth.signOut();
-
-        //TODO: Colocar aqui o LoginActivity
         Intent i = new Intent(getApplicationContext(), LoginActivity.class);
         startActivity(i);
     }

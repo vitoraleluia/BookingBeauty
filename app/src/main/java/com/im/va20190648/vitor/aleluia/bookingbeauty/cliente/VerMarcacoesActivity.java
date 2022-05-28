@@ -13,8 +13,10 @@ import android.widget.TextView;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.Timestamp;
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.EstadoMarcacao;
@@ -38,7 +40,7 @@ public class VerMarcacoesActivity extends AppCompatActivity {
     Date dataF, dataIni;
 
     MyAdapter myAdapter;
-
+    private FirebaseAuth auth= FirebaseAuth.getInstance();
     private FirebaseFirestore db;
 
     @Override
@@ -61,7 +63,10 @@ public class VerMarcacoesActivity extends AppCompatActivity {
 
         recyclerView.setAdapter(myAdapter);
 
-        db.collection("marcacoes").get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
+        db.collection("marcacoes")
+                .whereEqualTo("email", auth.getCurrentUser().getEmail().toString())
+                //.orderBy("dataInicio", Query.Direction.ASCENDING)
+                .get().addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
