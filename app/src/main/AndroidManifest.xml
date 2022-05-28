@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BookingBeauty">
         <activity
+            android:name=".EcraSobreActivity"
+            android:exported="false" />
+        <activity
             android:name=".cliente.FimMarcacao"
             android:exported="false" />
         <activity

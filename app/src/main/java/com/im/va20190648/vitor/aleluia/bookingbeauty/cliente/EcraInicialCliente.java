@@ -7,7 +7,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -17,6 +16,7 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.EcraSobreActivity;
 
 public class EcraInicialCliente extends AppCompatActivity {
 
@@ -64,6 +64,7 @@ public class EcraInicialCliente extends AppCompatActivity {
 
     public void onClickSobre(View v){
         //TODO: Depois do Tiago implementar esta classe
+        startActivity(new Intent(this, EcraSobreActivity.class));
     }
 
     public void onClickServicos(View v){
