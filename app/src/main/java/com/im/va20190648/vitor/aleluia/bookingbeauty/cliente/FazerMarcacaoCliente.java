@@ -55,6 +55,8 @@ public class FazerMarcacaoCliente extends AppCompatActivity {
 
     private FirebaseAuth auth;
 
+    private Utilizador cliente =  new Utilizador();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -71,7 +73,6 @@ public class FazerMarcacaoCliente extends AppCompatActivity {
         marcacoes = db.collection("marcacoes");
 
         getMarcacoes();
-
         calendario = findViewById(R.id.calendarView);
         calendario.setDate(System.currentTimeMillis(),false,false);
         calendario.setMinDate(dataAtual.getTime());
@@ -84,6 +85,25 @@ public class FazerMarcacaoCliente extends AppCompatActivity {
                 dia = diaSelecionado;
 
                 setSpinner();
+            }
+        });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+        //Obter cliente
+        db.collection("utilizadores").document(auth.getCurrentUser().getEmail()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+            @Override
+            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                if(task.isSuccessful()){
+                    DocumentSnapshot result = task.getResult();
+                    Log.d("TAG", "onComplete: " + result.toString());
+                    cliente.setEmail(result.getString("e-mail"));
+                    cliente.setNome(result.getString("nome"));
+                    cliente.setNtelemovel(result.getString("telemovel"));
+                }
             }
         });
     }
@@ -221,8 +241,6 @@ public class FazerMarcacaoCliente extends AppCompatActivity {
 
         Log.d("TAG", "onclickMarcacao: " + dataSelecionada.toString() + " | data fim: " +dataFim.toString());
 
-        Utilizador cliente = getDadosCliente();
-
         //Criacao do objeto marcacao
         Marcacao m = new Marcacao(cliente,dataSelecionada,dataFim,preco,servicosSelecionados, EstadoMarcacao.NAO_VALIDADA);
         Map<String, Object> marcacoesBaseDados = new HashMap<>();
@@ -235,28 +253,12 @@ public class FazerMarcacaoCliente extends AppCompatActivity {
         marcacoesBaseDados.put("servicos",m.getServicos());
         marcacoesBaseDados.put("estado",m.getEstado());
 
+
+
         marcacoes.add(marcacoesBaseDados);
         Intent finalMarcacao = new Intent(this, FimMarcacao.class);
         finalMarcacao.putExtra("marcacao", m);
         startActivity(finalMarcacao);
-    }
-
-    private Utilizador getDadosCliente() {
-        Utilizador u = new Utilizador();
-        //Pesquisar pelos dados através do email
-        db.collection("utilizadores").document(auth.getCurrentUser().getEmail()).get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if(task.isSuccessful()){
-                    DocumentSnapshot result = task.getResult();
-                    u.setEmail(result.getString("e-mail"));
-                    u.setNome(result.getString("nome"));
-                    u.setNtelemovel(result.getString("telemovel"));
-                }
-            }
-        });
-
-        return u;
     }
 
     public void onClickEditarDados(View v){

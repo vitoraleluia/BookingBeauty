@@ -65,4 +65,16 @@ public class Utilizador implements Serializable {
         firebase.child("Utilizadores").child(this.id).setValue(this);
         //podemos mudar o setvalue para cada dado que queremos guardar para nao guardar a password na BD
     }
+
+    @Override
+    public String toString() {
+        return "Utilizador{" +
+                "id='" + id + '\'' +
+                ", nome='" + nome + '\'' +
+                ", email='" + email + '\'' +
+                ", password='" + password + '\'' +
+                ", ntelemovel='" + ntelemovel + '\'' +
+                ", tipoUtilizador=" + tipoUtilizador +
+                '}';
+    }
 }
