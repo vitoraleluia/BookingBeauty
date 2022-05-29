@@ -68,7 +68,7 @@ public class EcraInicialEsteticista extends AppCompatActivity {
     }
 
     public void onClickAgenda(View v){
-        //TODO: Depois de implementar a agenda
+        startActivity(new Intent(EcraInicialEsteticista.this, AgendaActivity.class));
     }
 
     public void onClickEditarDados(View v){

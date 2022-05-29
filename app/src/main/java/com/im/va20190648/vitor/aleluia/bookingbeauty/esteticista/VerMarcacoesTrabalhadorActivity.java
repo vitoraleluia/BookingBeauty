@@ -8,8 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.view.Window;
-import android.view.WindowManager;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -20,8 +18,6 @@ import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.cliente.EditarDadosUtilizador;
-//TODO: Gonçalo dá fix nisto
-//import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.AdapterTrabalhador;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.AdapterTrabalhador;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.EstadoMarcacao;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.Marcacao;
