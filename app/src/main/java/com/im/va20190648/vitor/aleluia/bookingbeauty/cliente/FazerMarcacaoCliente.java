@@ -99,7 +99,6 @@ public class FazerMarcacaoCliente extends AppCompatActivity {
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){
                     DocumentSnapshot result = task.getResult();
-                    Log.d("TAG", "onComplete: " + result.toString());
                     cliente.setEmail(result.getString("e-mail"));
                     cliente.setNome(result.getString("nome"));
                     cliente.setNtelemovel(result.getString("telemovel"));
@@ -133,20 +132,17 @@ public class FazerMarcacaoCliente extends AppCompatActivity {
 
             String dataSelecionada = simpleDateFormat.format(auxDate);
             if(dataInicio.equals(dataSelecionada)) {
-                Log.d("TAG", "checktimings: cheguei if!" + horarioFuncionamento.size());
                 //Interar pelo array de horas e definir apenas as dispníveis
 
                 SimpleDateFormat sdf = new SimpleDateFormat("HH:mm");
                 String dataInicioHorasMinutos = sdf.format(m.getDataInicio());
                 String dataFimHorasMinutos = sdf.format(m.getDataFim());
                 for (String horaFuncionamento : horarioFuncionamento) {
-                    Log.d("TAG", "checktimings: cheguei for");
                     if (!checktimings(horaFuncionamento, dataInicioHorasMinutos) && checktimings(horaFuncionamento, dataFimHorasMinutos) || horaFuncionamento.equals(dataInicioHorasMinutos))
                         horasDisponiveis.remove(horaFuncionamento);
                 }
             }
         }
-        Log.d("TAG", "definirHorasDisponiveis: " + horarioFuncionamento.toString());
     }
 
     private boolean checktimings(String time, String endtime) {
@@ -157,7 +153,6 @@ public class FazerMarcacaoCliente extends AppCompatActivity {
         try {
             Date date1 = sdf.parse(time);
             Date date2 = sdf.parse(endtime);
-            Log.d("TAG", "checktimings: " + date1 + " | " + date2);
 
             if(date1.before(date2)) {
                 return true;
@@ -170,8 +165,6 @@ public class FazerMarcacaoCliente extends AppCompatActivity {
         }
         return false;
     }
-
-
 
     private void setSpinner() {
         definirHorasDisponiveis();
@@ -210,6 +203,11 @@ public class FazerMarcacaoCliente extends AppCompatActivity {
     }
 
     public void onclickMarcacao(View view){
+        if(cliente.getEmail() == null){
+            Toast.makeText(this, "Tente novamente", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         //Formatação da data selecionada para o formato de data
         SimpleDateFormat simpleDateFormat = new SimpleDateFormat("dd/MM/yyyy HH:mm");
         String dataString = dia + "/" + mes + "/" + ano + " " + spinner.getSelectedItem().toString();
@@ -238,8 +236,6 @@ public class FazerMarcacaoCliente extends AppCompatActivity {
         } catch (ParseException e) {
             e.printStackTrace();
         }
-
-        Log.d("TAG", "onclickMarcacao: " + dataSelecionada.toString() + " | data fim: " +dataFim.toString());
 
         //Criacao do objeto marcacao
         Marcacao m = new Marcacao(cliente,dataSelecionada,dataFim,preco,servicosSelecionados, EstadoMarcacao.NAO_VALIDADA);
