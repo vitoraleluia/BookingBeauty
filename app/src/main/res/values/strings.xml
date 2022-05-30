@@ -72,4 +72,5 @@
     <string name="BB_AutenticacaoFalhada">Autenticação Falhada!!!</string>
     <string name="BB_EmailJaExiste">Já existe este e-mail!!!</string>
     <string name="BB_DadosAlterados">Dados Alterados com sucesso!!!</string>
+    <string name="BB_Saudacao">Bem-vindo/a</string>
 </resources>

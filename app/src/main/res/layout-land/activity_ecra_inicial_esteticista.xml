@@ -24,10 +24,10 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/textViewNomeEsteticista"
+        android:id="@+id/textViewSaudacaoEsteticista"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bem-vindo, John Doe."
+        android:text="@string/BB_Saudacao"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/guideline29"
         app:layout_constraintEnd_toEndOf="parent"
@@ -156,5 +156,16 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.81" />
+
+    <TextView
+        android:id="@+id/textViewNomeEsteticista"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewSaudacaoEsteticista"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintStart_toEndOf="@+id/textViewSaudacaoEsteticista"
+        app:layout_constraintTop_toTopOf="@+id/textViewSaudacaoEsteticista" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

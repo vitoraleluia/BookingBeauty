@@ -31,7 +31,6 @@ public class EcraInicialCliente extends AppCompatActivity {
         setContentView(R.layout.activity_ecra_inicial_cliente);
 
         textViewNome = findViewById(R.id.textViewNomeCliente);
-        textViewNome.setText("Olá");
 
         db = FirebaseFirestore.getInstance();
         utilizadores = db.collection("utilizadores");
@@ -49,7 +48,7 @@ public class EcraInicialCliente extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){
-                    textViewNome.setText(getString(R.string.BB_Ola) + task.getResult().get("nome")+ ".");
+                    textViewNome.setText(task.getResult().get("nome")+ ".");
                 }else{
                     Log.d("QUERY_USER", "onComplete: Erro ao fazer query na BD");
                 }

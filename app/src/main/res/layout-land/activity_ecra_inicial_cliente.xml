@@ -7,14 +7,24 @@
     tools:context=".cliente.EcraInicialCliente">
 
     <TextView
-        android:id="@+id/textViewNomeCliente"
+        android:id="@+id/textViewNomeCliente2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Olá, Utilizador."
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/guideline28"
+        android:text="TextView"
+        app:layout_constraintBottom_toBottomOf="@+id/textViewSaudacao2"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.06"
+        app:layout_constraintHorizontal_bias="0.01"
+        app:layout_constraintStart_toEndOf="@+id/textViewSaudacao2"
+        app:layout_constraintTop_toTopOf="@+id/textViewSaudacao2" />
+
+    <TextView
+        android:id="@+id/textViewSaudacao2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/BB_Saudacao"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.05"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 

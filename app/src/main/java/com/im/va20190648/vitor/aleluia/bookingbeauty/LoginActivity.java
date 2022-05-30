@@ -62,7 +62,7 @@ public class LoginActivity extends AppCompatActivity {
         SpannableString ss = new SpannableString(getString(R.string.BB_CriarConta));
 
 
-        ss.setSpan(new CustomClickableSpan(),0,50, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
+        ss.setSpan(new CustomClickableSpan(),0,43, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
         textView.setText(ss);
         textView.setMovementMethod(LinkMovementMethod.getInstance());
 

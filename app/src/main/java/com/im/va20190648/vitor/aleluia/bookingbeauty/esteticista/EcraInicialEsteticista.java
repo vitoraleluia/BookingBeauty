@@ -16,7 +16,6 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
-import com.im.va20190648.vitor.aleluia.bookingbeauty.cliente.EcraInicialCliente;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.cliente.EditarDadosUtilizador;
 
 public class EcraInicialEsteticista extends AppCompatActivity {
@@ -33,7 +32,6 @@ public class EcraInicialEsteticista extends AppCompatActivity {
         setContentView(R.layout.activity_ecra_inicial_esteticista);
 
         textViewNome = findViewById(R.id.textViewNomeEsteticista);
-        textViewNome.setText(getString(R.string.welcome));
 
         db = FirebaseFirestore.getInstance();
         utilizadores = db.collection("utilizadores");
@@ -50,7 +48,7 @@ public class EcraInicialEsteticista extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){
-                    textViewNome.setText(getString(R.string.welcome) + task.getResult().get("nome")+ ".");
+                    textViewNome.setText(task.getResult().get("nome")+ ".");
                 }else{
                     Log.d("QUERY_USER", "onComplete: Erro ao fazer query na BD");
                 }
