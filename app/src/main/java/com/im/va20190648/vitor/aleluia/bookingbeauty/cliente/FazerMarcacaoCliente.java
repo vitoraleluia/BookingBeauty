@@ -196,7 +196,7 @@ public class FazerMarcacaoCliente extends AppCompatActivity {
 
                     setSpinner();
                 }else{
-                    Toast.makeText(FazerMarcacaoCliente.this, "Ocorreu um erro!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(FazerMarcacaoCliente.this, getString(R.string.BB_OcorreuErro), Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -204,7 +204,7 @@ public class FazerMarcacaoCliente extends AppCompatActivity {
 
     public void onclickMarcacao(View view){
         if(cliente.getEmail() == null){
-            Toast.makeText(this, "Tente novamente", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.BB_TenteNovamente), Toast.LENGTH_SHORT).show();
             return;
         }
 

@@ -6,7 +6,7 @@
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">Welcome !</string>
+    <string name="welcome">Welcome!!!</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">Login failed</string>
@@ -58,4 +58,19 @@
     <string name="BB_DadosPessoais">Personal Data</string>
     <string name="BB_Entrar">Login</string>
     <string name="BB_Registar">Register</string>
+    <string name="BB_NomeNaoAlterado">The name wasn\'t  changed!!!</string>
+    <string name="BB_PassNaoAlterada">The password wasn\'t changed!!!</string>
+    <string name="BB_TelemovelNaoAlterado">The phone number wasn\'t changed!!!</string>
+    <string name="BB_AlteradoSucesso">Change made successfully!!!</string>
+    <string name="BB_CampoObrigatorio">Required Field!!!</string>
+    <string name="BB_Ola">"Hello, "</string>
+    <string name="BB_TenteNovamente">Try again!!!</string>
+    <string name="BB_OcorreuErro">An error has occurred!!!</string>
+    <string name="BB_SemServicosSelec">No services selected!!!</string>
+    <string name="BB_SemMarcacoes">It\'s a little empty around here, make more appointments!!!</string>
+    <string name="BB_AgendaVazia">There are no appointments to display!!!</string>
+    <string name="BB_CriarConta">Don\'t have an account yet? Register HERE!!!</string>
+    <string name="BB_AutenticacaoFalhada">Authentication Failed!!!</string>
+    <string name="BB_EmailJaExiste">E-mail already used!!!</string>
+    <string name="BB_DadosAlterados">Successfully changed data!!!</string>
 </resources>

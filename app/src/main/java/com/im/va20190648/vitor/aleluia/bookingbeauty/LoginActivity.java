@@ -59,7 +59,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        SpannableString ss = new SpannableString("Ainda não possui uma conta? Efetue o seu registo AQUI");
+        SpannableString ss = new SpannableString(getString(R.string.BB_CriarConta));
 
 
         ss.setSpan(new CustomClickableSpan(),0,50, Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
@@ -91,7 +91,7 @@ public class LoginActivity extends AppCompatActivity {
                                 startActivity(new Intent(LoginActivity.this, EcraInicialEsteticista.class));
                             }
                         } else {
-                            Toast.makeText(LoginActivity.this, "Autenticação Falhada", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(LoginActivity.this, getString(R.string.BB_AutenticacaoFalhada), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

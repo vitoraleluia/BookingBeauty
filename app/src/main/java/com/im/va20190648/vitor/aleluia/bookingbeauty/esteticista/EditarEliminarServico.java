@@ -58,7 +58,7 @@ public class EditarEliminarServico extends AppCompatActivity {
 
         for(TextInputLayout til: camposTexto){
             if(til.getEditText().getText().toString().trim().matches("")) {
-                til.setError("O campo não pode estar vazio");
+                til.setError(getString(R.string.BB_CampoObrigatorio));
                 return;
             }
         }

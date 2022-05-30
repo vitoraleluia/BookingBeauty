@@ -94,15 +94,15 @@ public class EditarDadosUtilizador extends AppCompatActivity {
     public void botaoPremido(View v) {
 
         if(nome.getEditText().getText().toString().trim().matches("")) {
-            nome.setError("Campo obrigatório!!!");
+            nome.setError(getString(R.string.BB_CampoObrigatorio));
             return;
 
         } else if(password.getEditText().getText().toString().trim().matches("")){
-            password.setError("Campo obrigatório!!!");
+            password.setError(getString(R.string.BB_CampoObrigatorio));
             return;
 
         } else if(telemovel.getEditText().getText().toString().trim().matches("")) {
-            telemovel.setError("Campo obrigatório!!!");
+            telemovel.setError(getString(R.string.BB_CampoObrigatorio));
             return;
 
         } else {
@@ -112,13 +112,13 @@ public class EditarDadosUtilizador extends AppCompatActivity {
             telemovelNovo = telemovel.getEditText().getText().toString();
 
             if (nomeAnterior.equals(nomeNovo) && emailAnterior.equals(emailNovo) && passwordAnterior.equals(passwordNova) && telemovelAnterior.equals(telemovelNovo)) {
-                nome.setError("O nome não foi alterado!!!");
-                password.setError("A password não foi alterada!!!");
-                telemovel.setError("O número de telemóvel não foi alterado!!!");
+                nome.setError(getString(R.string.BB_NomeNaoAlterado));
+                password.setError(getString(R.string.BB_PassNaoAlterada));
+                telemovel.setError(getString(R.string.BB_TelemovelNaoAlterado));
                 return;
 
             } else if (passwordNova.length()<=6) {
-                password.setError("A password é demasiado curta!!!");
+                password.setError(getString(R.string.invalid_password));
                 return;
 
             } else {
@@ -127,7 +127,7 @@ public class EditarDadosUtilizador extends AppCompatActivity {
                 telemovel.setErrorEnabled(false);
                 mAuth.getCurrentUser().updatePassword(passwordNova);
                 doc.update("nome", nomeNovo, "e-mail", emailNovo, "password", passwordNova, "telemovel", telemovelNovo);
-                Toast.makeText(this, "Alteração realizada com sucesso!!!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, getString(R.string.BB_AlteradoSucesso), Toast.LENGTH_SHORT).show();
             }
         }
     }

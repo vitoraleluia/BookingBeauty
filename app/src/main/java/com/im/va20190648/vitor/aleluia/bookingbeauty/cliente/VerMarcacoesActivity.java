@@ -93,7 +93,7 @@ public class VerMarcacoesActivity extends AppCompatActivity {
                         myAdapter.notifyDataSetChanged();
                     }
                     if (task.getResult().isEmpty()) {
-                        vazio.setText("Está um pouco vazio por aqui, faça mais marcações!!!");
+                        vazio.setText(R.string.BB_SemMarcacoes);
                     }
                 }
             }

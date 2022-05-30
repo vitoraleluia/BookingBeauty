@@ -65,7 +65,7 @@ public class VerMarcacoesTrabalhadorActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
                     if (task.getResult().isEmpty()) {
-                        vazio.setText("Não há marcações a apresentar!!!");
+                        vazio.setText(getString(R.string.BB_AgendaVazia));
                     }
                     for (DocumentSnapshot documentSnapshot : task.getResult().getDocuments()) {
                         String documentId = documentSnapshot.getId();

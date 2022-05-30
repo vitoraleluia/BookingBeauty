@@ -100,7 +100,7 @@ public class AgendaActivity extends AppCompatActivity {
                                 adapterAgenda.notifyDataSetChanged();
                             }
                             if (task.getResult().isEmpty()) {
-                                vazio.setText("Não há marcações a apresentar!!!");
+                                vazio.setText(getString(R.string.BB_AgendaVazia));
                             }
                         }
                     }

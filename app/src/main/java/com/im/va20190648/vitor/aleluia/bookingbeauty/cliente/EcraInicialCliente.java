@@ -49,7 +49,7 @@ public class EcraInicialCliente extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                 if(task.isSuccessful()){
-                    textViewNome.setText("Olá, " + task.getResult().get("nome")+ ".");
+                    textViewNome.setText(getString(R.string.BB_Ola) + task.getResult().get("nome")+ ".");
                 }else{
                     Log.d("QUERY_USER", "onComplete: Erro ao fazer query na BD");
                 }
@@ -62,7 +62,6 @@ public class EcraInicialCliente extends AppCompatActivity {
     }
 
     public void onClickSobre(View v){
-        //TODO: Depois do Tiago implementar esta classe
         startActivity(new Intent(this, EcraSobreActivity.class));
     }
 

@@ -72,7 +72,7 @@ public class RegistoActivity extends AppCompatActivity {
                             @Override
                             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                                 if (!task.getResult().isEmpty()) {
-                                    emailRegisto.setError("Já existe este e-mail!!!");
+                                    emailRegisto.setError(getString(R.string.BB_EmailJaExiste));
                                     jaExiste = true;
                                     return;
                                 }
@@ -87,7 +87,7 @@ public class RegistoActivity extends AppCompatActivity {
                             .addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void unused) {
-                                    Toast.makeText(RegistoActivity.this, "Dados guardados com sucesso", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(RegistoActivity.this, getString(R.string.BB_DadosAlterados), Toast.LENGTH_SHORT).show();
                                 }
                             })
                             .addOnFailureListener(new OnFailureListener() {
@@ -97,13 +97,8 @@ public class RegistoActivity extends AppCompatActivity {
                                 }
                             });
                 }
-
-
-
-
             }
         });
-
     }
 
     private void criarUser() {
@@ -117,7 +112,7 @@ public class RegistoActivity extends AppCompatActivity {
                             u.guardarDados();
                             startActivity(new Intent(RegistoActivity.this, EcraInicialCliente.class));
                         }else{
-                            Toast.makeText(RegistoActivity.this,"E-mail de utilizador já existe!!!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegistoActivity.this,getString(R.string.BB_EmailJaExiste), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
@@ -125,7 +120,7 @@ public class RegistoActivity extends AppCompatActivity {
 
     private void registarUser() {
         if(nomeRegisto.getEditText().getText().toString()==""||passwordRegisto.getEditText().getText().toString()==""|passwordRegisto.getEditText().getText().toString()==""||ntelemovelRegisto.getEditText().getText().toString()==""){
-            Toast.makeText(this,"Preencha todos os campos do registo",Toast.LENGTH_LONG);
+            Toast.makeText(this,getString(R.string.BB_CampoObrigatorio),Toast.LENGTH_LONG);
         } else{
             u = new Utilizador();
             u.setNome(nomeRegisto.getEditText().getText().toString());

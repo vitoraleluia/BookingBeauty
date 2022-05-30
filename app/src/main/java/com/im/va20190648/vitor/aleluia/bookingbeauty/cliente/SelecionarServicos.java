@@ -104,7 +104,7 @@ public class SelecionarServicos extends AppCompatActivity implements ListaServic
 
     public void onclickProsseguir(View v){
         if( servicosSelecionados.size() == 0 ){
-            Toast.makeText(this, "Sem serviços selecionados", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.BB_SemServicosSelec), Toast.LENGTH_SHORT).show();
             return;
         }
 

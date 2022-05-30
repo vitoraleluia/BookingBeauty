@@ -5,7 +5,7 @@
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in or register</string>
     <string name="action_sign_in_short">Sign in</string>
-    <string name="welcome">"Welcome !"</string>
+    <string name="welcome">Bem vindo/a!!!</string>
     <string name="invalid_username">Not a valid username</string>
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
@@ -57,4 +57,19 @@
     <string name="BB_DadosPessoais">Dados Pessoais</string>
     <string name="BB_Entrar">Entrar</string>
     <string name="BB_Registar">Registar</string>
+    <string name="BB_NomeNaoAlterado">O nome não foi alterado!!!</string>
+    <string name="BB_PassNaoAlterada">A password não foi alterada!!!</string>
+    <string name="BB_TelemovelNaoAlterado">O número de telemóvel não foi alterado!!!</string>
+    <string name="BB_AlteradoSucesso">Alteração realizada com sucesso!!!</string>
+    <string name="BB_CampoObrigatorio">Campo Obrigatório!!!</string>
+    <string name="BB_Ola">Olá,</string>
+    <string name="BB_TenteNovamente">Tente Novamente!!!</string>
+    <string name="BB_OcorreuErro">Ocorreu um erro!!!</string>
+    <string name="BB_SemServicosSelec">Sem serviços selecionados!!!</string>
+    <string name="BB_SemMarcacoes">Está um pouco vazio por aqui, faça mais marcações!!!</string>
+    <string name="BB_AgendaVazia">Não há marcações a apresentar!!!</string>
+    <string name="BB_CriarConta">Ainda não possui uma conta? Efetue o seu registo AQUI</string>
+    <string name="BB_AutenticacaoFalhada">Autenticação Falhada!!!</string>
+    <string name="BB_EmailJaExiste">Já existe este e-mail!!!</string>
+    <string name="BB_DadosAlterados">Dados Alterados com sucesso!!!</string>
 </resources>
