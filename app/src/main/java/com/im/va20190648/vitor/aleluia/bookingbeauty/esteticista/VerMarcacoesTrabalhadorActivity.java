@@ -73,8 +73,7 @@ public class VerMarcacoesTrabalhadorActivity extends AppCompatActivity {
                         dataF=timeFim.toDate();
 
                         ArrayList<Servico> serv = (ArrayList<Servico>) documentSnapshot.get("servicos");
-
-                        //TODO: Mostrar o nome do utilizador
+                        
                         Utilizador u = new Utilizador();
                         u.setNome(documentSnapshot.get("nome").toString());
                        // u.setEmail(documentSnapshot.get("email").toString());

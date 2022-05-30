@@ -61,6 +61,10 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
                     .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                         @Override
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                            if(!task.getResult().exists()) {
+                                return;
+                            }
+
                             List<Map<String, Object>> groups = (List<Map<String, Object>>) task.getResult().get("servicos");
                             for (Map<String, Object> group : groups) {
                                 String name = group.get("nome").toString();
@@ -86,19 +90,39 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
             public void onClick(View view) {
                 firebaseFirestore.collection("marcacoes")
                         .document(marcacoes.get(position).getDocumentId())
-                        .delete()
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                             @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if(task.isSuccessful()){
-                                    marcacoes.remove(marcacao);
-                                    notifyDataSetChanged();
-                                }
+                            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                                    if (task.getResult().get("estado").toString().equalsIgnoreCase("VALIDADA")) {
+                                        firebaseFirestore.collection("marcacoesTrabalhadores")
+                                                .document(marcacoes.get(position).getDocumentId())
+                                                .delete()
+                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if (task.isSuccessful()) {
+                                                            notifyDataSetChanged();
+                                                        }
+                                                    }
+                                                });
+                                    }
+                                        firebaseFirestore.collection("marcacoes")
+                                                .document(marcacoes.get(position).getDocumentId())
+                                                .delete()
+                                                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if(task.isSuccessful()){
+                                                            marcacoes.remove(marcacao);
+                                                            notifyDataSetChanged();
+                                                        }
+                                                    }
+                                                });
                             }
                         });
             }
         });
-
     }
 
     @Override
