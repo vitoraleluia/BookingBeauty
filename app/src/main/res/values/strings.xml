@@ -36,4 +36,25 @@
     <string name="BB_MarcacaoSucesso">A sua marcação foi feita com sucesso!</string>
     <string name="BB_AdicionarCalendario">Adicionar marcação ao calendário</string>
     <string name="BB_PaginaInicial">Página Inicial</string>
+    <string name="BB_DataInicio">Data Início</string>
+    <string name="BB_DataFim">Data Fim</string>
+    <string name="BB_Estado">Estado</string>
+    <string name="BB_NomeCliente">Nome de Cliente</string>
+    <string name="BB_Data">Data</string>
+    <string name="BB_HoraInicio">Hora de Início</string>
+    <string name="BB_HoraFim">Hora de Fim</string>
+    <string name="BB_Nome">Nome</string>
+    <string name="BB_QuemSomos">Quem Somos</string>
+    <string name="BB_QuemSomosTexto">A Booking Beauty é uma empresa que presta serviços de beleza femininos. Destaca-se através as marcações que são feitas usando a aplicação móvel, por chamada ou pessoalmente.</string>
+    <string name="BB_Morada">Morada</string>
+    <string name="BB_MoradaTexto">Morada da loja: Av. do Empresário, Campus da Talagueira, Zona do Lazer, 6000-767 Castelo Branco.</string>
+    <string name="BB_Direcoes">Direções</string>
+    <string name="BB_Contactos">Contactos</string>
+    <string name="BB_ContactosTexto">Telemóvel: 912345678\nE-mail: info@bookingbeauty.pt</string>
+    <string name="BB_Telemovel">Telemóvel</string>
+    <string name="BB_SalvarDados">Salvar Dados</string>
+    <string name="BB_Logout">Logout</string>
+    <string name="BB_DadosPessoais">Dados Pessoais</string>
+    <string name="BB_Entrar">Entrar</string>
+    <string name="BB_Registar">Registar</string>
 </resources>

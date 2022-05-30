@@ -24,7 +24,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nome Cliente"
+                android:text="@string/BB_NomeCliente"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -46,7 +46,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Data"
+                android:text="@string/BB_Data"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -70,7 +70,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hora Início"
+                android:text="@string/BB_HoraInicio"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -94,7 +94,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Hora Fim"
+                android:text="@string/BB_HoraFim"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -117,7 +117,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Preço"
+                android:text="@string/BB_Preço"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -139,7 +139,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Serviços"
+                android:text="@string/BB_Servicos"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
@@ -161,7 +161,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Estado"
+                android:text="@string/BB_Estado"
                 android:textSize="16sp"
                 android:textStyle="bold" />
 
