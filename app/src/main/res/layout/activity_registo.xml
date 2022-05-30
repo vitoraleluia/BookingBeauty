@@ -69,6 +69,7 @@
         android:layout_marginStart="32dp"
         android:layout_marginEnd="32dp"
         android:hint="Password"
+        app:endIconMode="password_toggle"
         app:layout_constraintBottom_toTopOf="@+id/telemovel"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

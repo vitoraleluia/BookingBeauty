@@ -16,6 +16,7 @@ import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.protobuf.StringValue;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.cliente.EditarDadosUtilizador;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.AdapterTrabalhador;
@@ -63,6 +64,9 @@ public class VerMarcacoesTrabalhadorActivity extends AppCompatActivity {
             @Override
             public void onComplete(@NonNull Task<QuerySnapshot> task) {
                 if (task.isSuccessful()) {
+                    if (task.getResult().isEmpty()) {
+                        vazio.setText("Não há marcações a apresentar!!!");
+                    }
                     for (DocumentSnapshot documentSnapshot : task.getResult().getDocuments()) {
                         String documentId = documentSnapshot.getId();
 
@@ -84,10 +88,9 @@ public class VerMarcacoesTrabalhadorActivity extends AppCompatActivity {
                         marcacoes.add(marcacao);
                         adapterTrabalhador.notifyDataSetChanged();
                     }
-                    if (task.getResult().isEmpty()) {
-                        vazio.setText("Não há marcações a apresentar!!!");
-                    }
+
                 }
+
             }
         });
     }

@@ -117,6 +117,7 @@ public class AdapterTrabalhador extends RecyclerView.Adapter<AdapterTrabalhador.
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful()){
                                     marcacoesTrabalhadores.add(marcacao);
+                                    marcacoes.remove(marcacao);
                                     notifyDataSetChanged();
                                 }
                             }
@@ -132,6 +133,7 @@ public class AdapterTrabalhador extends RecyclerView.Adapter<AdapterTrabalhador.
                                 }
                             }
                         });
+
             }
         });
 
@@ -145,7 +147,7 @@ public class AdapterTrabalhador extends RecyclerView.Adapter<AdapterTrabalhador.
 
     public static class ViewHolderTrabalhador extends RecyclerView.ViewHolder {
 
-        TextView nomeM, dataM, horaInicioM, horaFimM, precoM, servicosM, estadoM;
+        TextView nomeM, dataM, horaInicioM, horaFimM, precoM, servicosM, estadoM, vazio;
         ImageView apagar, adicionar;
 
         public ViewHolderTrabalhador(@NonNull View itemView) {
@@ -159,6 +161,7 @@ public class AdapterTrabalhador extends RecyclerView.Adapter<AdapterTrabalhador.
             apagar = itemView.findViewById(R.id.imageView4);
             adicionar = itemView.findViewById(R.id.imageView5);
             estadoM = itemView.findViewById(R.id.tvestado);
+            vazio = itemView.findViewById(R.id.vazio);
         }
 
     }
