@@ -43,7 +43,7 @@ public class FazerMarcacaoCliente extends AppCompatActivity {
     private CalendarView calendario;
     private Spinner spinner;
 
-    private Date dataAtual, dataSelecionada;
+    private Date dataSelecionada;
     int ano, mes, dia;
     private ArrayList<Marcacao> listaMarcacoes = new ArrayList<>();
     private ArrayList<String> horarioFuncionamento = new ArrayList<>(
@@ -67,7 +67,8 @@ public class FazerMarcacaoCliente extends AppCompatActivity {
         //Obter os servicos selecionados pelo utilizador
         servicosSelecionados = (ArrayList<Servico>) getIntent().getSerializableExtra("servicosSelecionados");
 
-        dataAtual = Calendar.getInstance().getTime();
+        Calendar dataMinima = Calendar.getInstance();
+        dataMinima.add(Calendar.DAY_OF_MONTH, 1);
 
         db = FirebaseFirestore.getInstance();
         marcacoes = db.collection("marcacoes");
@@ -75,7 +76,7 @@ public class FazerMarcacaoCliente extends AppCompatActivity {
         getMarcacoes();
         calendario = findViewById(R.id.calendarView);
         calendario.setDate(System.currentTimeMillis(),false,false);
-        calendario.setMinDate(dataAtual.getTime());
+        calendario.setMinDate(dataMinima.getTime().getTime());
         calendario.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
 
             @Override
