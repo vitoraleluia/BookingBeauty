@@ -19,6 +19,7 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.QuerySnapshot;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.cliente.EcraInicialCliente;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.Utilizador;
 
@@ -30,6 +31,7 @@ public class RegistoActivity extends AppCompatActivity {
     private Button btRegistar;
     private FirebaseAuth mAuth;
     private Utilizador u;
+    private Boolean jaExiste=false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,21 +66,41 @@ public class RegistoActivity extends AppCompatActivity {
                 hashMap.put("tipoUser",u.getTipoUtilizador());
 
                 FirebaseFirestore.getInstance().collection("utilizadores")
-                        .document(getEmail.toString())
-                        .set(hashMap)
-                        .addOnSuccessListener(new OnSuccessListener<Void>() {
+                        .whereEqualTo("email", getEmail)
+                        .get()
+                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                             @Override
-                            public void onSuccess(Void unused) {
-                                Toast.makeText(RegistoActivity.this, "Dados guardados com sucesso", Toast.LENGTH_SHORT).show();
+                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                                if (!task.getResult().isEmpty()) {
+                                    emailRegisto.setError("Já existe este e-mail!!!");
+                                    jaExiste = true;
+                                    return;
+                                }
                             }
-                        })
-                        .addOnFailureListener(new OnFailureListener() {
-                            @Override
-                            public void onFailure(@NonNull Exception e) {
-                                Toast.makeText(RegistoActivity.this,""+e.getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                ;
+                        });
+
+
+                if(jaExiste) {
+                    FirebaseFirestore.getInstance().collection("utilizadores")
+                            .document(getEmail.toString())
+                            .set(hashMap)
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void unused) {
+                                    Toast.makeText(RegistoActivity.this, "Dados guardados com sucesso", Toast.LENGTH_SHORT).show();
+                                }
+                            })
+                            .addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(RegistoActivity.this,""+e.getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                }
+
+
+
+
             }
         });
 
@@ -95,7 +117,7 @@ public class RegistoActivity extends AppCompatActivity {
                             u.guardarDados();
                             startActivity(new Intent(RegistoActivity.this, EcraInicialCliente.class));
                         }else{
-                            Toast.makeText(RegistoActivity.this,"Erro ao criar um utilizador", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(RegistoActivity.this,"E-mail de utilizador já existe!!!", Toast.LENGTH_SHORT).show();
                         }
                     }
                 });

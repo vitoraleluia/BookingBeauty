@@ -13,7 +13,7 @@
             android:name=".esteticista.AgendaActivity"
             android:exported="false" />
         <activity
-            android:name=".EcraSobreActivity"
+            android:name=".cliente.EcraSobreActivity"
             android:exported="false" />
         <activity
             android:name=".cliente.FimMarcacao"

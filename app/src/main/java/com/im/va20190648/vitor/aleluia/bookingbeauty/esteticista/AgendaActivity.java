@@ -5,7 +5,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
@@ -15,6 +17,7 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.cliente.EditarDadosUtilizador;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.AdapterAgenda;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.AdapterTrabalhador;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.EstadoMarcacao;
@@ -102,5 +105,10 @@ public class AgendaActivity extends AppCompatActivity {
                         }
                     }
                 });
+    }
+
+    public void onClickEditarDados(View v){
+        Intent i = new Intent(this, EditarDadosUtilizador.class);
+        startActivity(i);
     }
 }

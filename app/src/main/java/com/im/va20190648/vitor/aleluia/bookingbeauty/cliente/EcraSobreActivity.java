@@ -1,4 +1,4 @@
-package com.im.va20190648.vitor.aleluia.bookingbeauty;
+package com.im.va20190648.vitor.aleluia.bookingbeauty.cliente;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -6,6 +6,8 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
+
+import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
 
 public class EcraSobreActivity extends AppCompatActivity {
 
@@ -22,4 +24,8 @@ public class EcraSobreActivity extends AppCompatActivity {
         startActivity(mapIntent);
     }
 
+    public void onClickEditarDados(View v){
+        Intent i = new Intent(this, EditarDadosUtilizador.class);
+        startActivity(i);
+    }
 }

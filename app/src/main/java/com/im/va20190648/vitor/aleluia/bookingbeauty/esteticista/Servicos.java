@@ -19,6 +19,7 @@ import com.google.firebase.firestore.ListenerRegistration;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.cliente.EditarDadosUtilizador;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.Servico;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.ServicoListener;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.ServicosRecyclerViewAdapter;
@@ -103,5 +104,10 @@ public class Servicos extends AppCompatActivity implements ServicoListener {
         startActivity(editarServico);
 
         //Enviar para o editar/eliminar servico
+    }
+
+    public void onClickEditarDados(View v){
+        Intent i = new Intent(this, EditarDadosUtilizador.class);
+        startActivity(i);
     }
 }

@@ -16,7 +16,6 @@ import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
-import com.im.va20190648.vitor.aleluia.bookingbeauty.EcraSobreActivity;
 
 public class EcraInicialCliente extends AppCompatActivity {
 
