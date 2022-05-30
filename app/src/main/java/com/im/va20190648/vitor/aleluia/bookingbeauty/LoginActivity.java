@@ -19,6 +19,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -31,8 +32,7 @@ import com.im.va20190648.vitor.aleluia.bookingbeauty.esteticista.EcraInicialEste
 
 public class LoginActivity extends AppCompatActivity {
 
-    private EditText passwordLogin;
-    private EditText emailLogin;
+    private TextInputLayout passwordLogin, emailLogin;
     private FirebaseAuth mAuth;
     private Utilizador u;
     private Button btLogin;
@@ -40,16 +40,13 @@ public class LoginActivity extends AppCompatActivity {
     private FirebaseFirestore db;
     private CollectionReference utilizadores;
 
-    //TESTE
-    private Button gotoregisto;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
         mAuth = FirebaseAuth.getInstance();
-        passwordLogin = findViewById(R.id.passwordLogin);
-        emailLogin = findViewById(R.id.emailLogin);
+        passwordLogin = (TextInputLayout) findViewById(R.id.password);
+        emailLogin = (TextInputLayout) findViewById(R.id.email);
         btLogin = findViewById(R.id.btLogin);
         textView = findViewById(R.id.textView);
         db = FirebaseFirestore.getInstance();
@@ -81,7 +78,7 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void efetuarLogin() {
-        mAuth.signInWithEmailAndPassword(emailLogin.getText().toString(), passwordLogin.getText().toString())
+        mAuth.signInWithEmailAndPassword(emailLogin.getEditText().getText().toString(), passwordLogin.getEditText().getText().toString())
                 .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
@@ -102,8 +99,8 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private void receberDados() {
-        Log.d("TAG", "receberDados: " + emailLogin.getText().toString());
-        utilizadores.document(emailLogin.getText().toString())
+        Log.d("TAG", "receberDados: " + emailLogin.getEditText().getText().toString());
+        utilizadores.document(emailLogin.getEditText().getText().toString())
                 .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {

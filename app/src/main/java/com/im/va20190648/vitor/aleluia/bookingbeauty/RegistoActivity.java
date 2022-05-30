@@ -14,6 +14,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -25,10 +26,7 @@ import java.util.HashMap;
 
 public class RegistoActivity extends AppCompatActivity {
 
-    private EditText nomeRegisto;
-    private EditText passwordRegisto;
-    private EditText emailRegisto;
-    private EditText ntelemovelRegisto;
+    private TextInputLayout nomeRegisto, passwordRegisto, emailRegisto, ntelemovelRegisto;
     private Button btRegistar;
     private FirebaseAuth mAuth;
     private Utilizador u;
@@ -38,10 +36,10 @@ public class RegistoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registo);
 
-        nomeRegisto = findViewById(R.id.nomeRegisto);
-        passwordRegisto = findViewById(R.id.passwordRegisto);
-        emailRegisto = findViewById(R.id.emailRegisto);
-        ntelemovelRegisto = findViewById(R.id.ntelemovelRegisto);
+        nomeRegisto = (TextInputLayout) findViewById(R.id.nome);
+        passwordRegisto = (TextInputLayout) findViewById(R.id.password);
+        emailRegisto = (TextInputLayout) findViewById(R.id.email);
+        ntelemovelRegisto = (TextInputLayout) findViewById(R.id.telemovel);
         mAuth = FirebaseAuth.getInstance();
 
         btRegistar = findViewById(R.id.btRegistar);
@@ -49,10 +47,10 @@ public class RegistoActivity extends AppCompatActivity {
         btRegistar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String getNome = nomeRegisto.getText().toString();
-                String getEmail = emailRegisto.getText().toString();
-                String getPassword = passwordRegisto.getText().toString();
-                String getNTelemovel = ntelemovelRegisto.getText().toString();
+                String getNome = nomeRegisto.getEditText().getText().toString();
+                String getEmail = emailRegisto.getEditText().getText().toString();
+                String getPassword = passwordRegisto.getEditText().getText().toString();
+                String getNTelemovel = ntelemovelRegisto.getEditText().getText().toString();
 
                 registarUser();
                 criarUser();
@@ -104,15 +102,14 @@ public class RegistoActivity extends AppCompatActivity {
     }
 
     private void registarUser() {
-    if(nomeRegisto.getText().toString()==""||passwordRegisto.getText().toString()==""|passwordRegisto.getText().toString()==""||ntelemovelRegisto.getText().toString()==""){
-        Toast.makeText(this,"Preencha todos os campos do registo",Toast.LENGTH_LONG);
-    }else{
-        u = new Utilizador();
-        u.setNome(nomeRegisto.getText().toString());
-        u.setEmail(emailRegisto.getText().toString());
-        u.setNtelemovel(ntelemovelRegisto.getText().toString());
-        u.setPassword(passwordRegisto.getText().toString());
-
-    }
+        if(nomeRegisto.getEditText().getText().toString()==""||passwordRegisto.getEditText().getText().toString()==""|passwordRegisto.getEditText().getText().toString()==""||ntelemovelRegisto.getEditText().getText().toString()==""){
+            Toast.makeText(this,"Preencha todos os campos do registo",Toast.LENGTH_LONG);
+        } else{
+            u = new Utilizador();
+            u.setNome(nomeRegisto.getEditText().getText().toString());
+            u.setEmail(emailRegisto.getEditText().getText().toString());
+            u.setNtelemovel(ntelemovelRegisto.getEditText().getText().toString());
+            u.setPassword(passwordRegisto.getEditText().getText().toString());
+        }
     }
 }
