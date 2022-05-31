@@ -43,4 +43,10 @@ public class FimMarcacao extends AppCompatActivity {
         Intent i = new Intent(this, EcraInicialCliente.class);
         startActivity(i);
     }
+
+    public void onClickEditarDados(View v){
+        Intent i = new Intent(this, EditarDadosUtilizador.class);
+        startActivity(i);
+    }
+
 }
