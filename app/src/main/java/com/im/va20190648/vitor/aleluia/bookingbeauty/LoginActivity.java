@@ -104,10 +104,16 @@ public class LoginActivity extends AppCompatActivity {
                 .get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
                     @Override
                     public void onSuccess(DocumentSnapshot documentSnapshot) {
-                        u = new Utilizador();
-                        u.setEmail(documentSnapshot.getString("e-mail"));
-                        u.setPassword(documentSnapshot.getString("password"));
-                        u.setTipoUtilizador(Integer.parseInt(documentSnapshot.get("tipoUser").toString()));
+                        if(documentSnapshot.exists()){
+                            u = new Utilizador();
+                            u.setEmail(documentSnapshot.getString("e-mail"));
+                            u.setPassword(documentSnapshot.getString("password"));
+                            u.setTipoUtilizador(Integer.parseInt(documentSnapshot.get("tipoUser").toString()));
+                        }else{
+                            Toast.makeText(LoginActivity.this, getString(R.string.BB_AutenticacaoFalhada), Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
                     }
                 });
     }

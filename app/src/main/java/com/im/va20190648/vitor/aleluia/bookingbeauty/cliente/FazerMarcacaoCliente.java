@@ -19,6 +19,7 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.google.type.DateTime;
@@ -77,6 +78,7 @@ public class FazerMarcacaoCliente extends AppCompatActivity {
         calendario = findViewById(R.id.calendarView);
         calendario.setDate(System.currentTimeMillis(),false,false);
         calendario.setMinDate(dataMinima.getTime().getTime());
+
         calendario.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
 
             @Override
@@ -250,9 +252,12 @@ public class FazerMarcacaoCliente extends AppCompatActivity {
         marcacoesBaseDados.put("servicos",m.getServicos());
         marcacoesBaseDados.put("estado",m.getEstado());
 
-
-
-        marcacoes.add(marcacoesBaseDados);
+        try {
+            marcacoes.add(marcacoesBaseDados);
+        }catch(Exception e){
+            Toast.makeText(this, "Selecione o dia", Toast.LENGTH_SHORT).show();
+            return;
+        }
         Intent finalMarcacao = new Intent(this, FimMarcacao.class);
         finalMarcacao.putExtra("marcacao", m);
         startActivity(finalMarcacao);
