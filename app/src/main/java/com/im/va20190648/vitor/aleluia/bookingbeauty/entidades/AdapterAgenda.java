@@ -2,6 +2,7 @@ package com.im.va20190648.vitor.aleluia.bookingbeauty.entidades;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,9 +31,10 @@ public class AdapterAgenda extends RecyclerView.Adapter<AdapterAgenda.ViewHolder
     ArrayList<Marcacao> marcacoesTrabalhadores = new ArrayList<Marcacao>();
     FirebaseFirestore firebaseFirestore;
 
-    public AdapterAgenda(Context context, ArrayList<Marcacao> marcacoes) {
+    public AdapterAgenda(Context context, ArrayList<Marcacao> marcacoes, ArrayList<Marcacao> marcacoesTrabalhadores) {
         this.context = context;
         this.marcacoes = marcacoes;
+        this.marcacoesTrabalhadores = marcacoesTrabalhadores;
         firebaseFirestore = FirebaseFirestore.getInstance();
     }
 
@@ -57,11 +59,14 @@ public class AdapterAgenda extends RecyclerView.Adapter<AdapterAgenda.ViewHolder
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        if(!task.getResult().exists()) {
+                            return;
+                        }
                         List<Map<String, Object>> groups = (List<Map<String,Object>>) task.getResult().get("servicos");
                         for(Map<String, Object> group : groups) {
                             String name= group.get("nome").toString();
                             nomes.add(name);
-                            serv+= name + ";";
+                            serv+= name + "; ";
                             holder.servicosM.setText(serv);
                         }
                         serv="";
@@ -93,24 +98,25 @@ public class AdapterAgenda extends RecyclerView.Adapter<AdapterAgenda.ViewHolder
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
                                 if(task.isSuccessful()){
-                                    marcacoesTrabalhadores.remove(marcacao);
-                                    notifyDataSetChanged();
+                                    firebaseFirestore.collection("marcacoes")
+                                            .document(marcacoes.get(position).getDocumentId())
+                                            .delete()
+                                            .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                @Override
+                                                public void onComplete(@NonNull Task<Void> task) {
+                                                    if (task.isSuccessful()) {
+                                                        marcacoesTrabalhadores.remove(marcacao);
+                                                        marcacoes.remove(marcacao);
+                                                        notifyDataSetChanged();
+                                                        return;
+                                                    }
+                                                }
+                                            });
                                 }
+
                             }
                         });
 
-                firebaseFirestore.collection("marcacoes")
-                        .document(marcacoes.get(position).getDocumentId())
-                        .delete()
-                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                            @Override
-                            public void onComplete(@NonNull Task<Void> task) {
-                                if(task.isSuccessful()){
-                                    marcacoes.remove(marcacao);
-                                    notifyDataSetChanged();
-                                }
-                            }
-                        });
             }
         });
     }

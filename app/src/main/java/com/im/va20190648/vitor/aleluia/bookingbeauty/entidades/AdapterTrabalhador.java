@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -15,6 +16,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.LoginActivity;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
 
 import java.text.SimpleDateFormat;
@@ -133,7 +135,6 @@ public class AdapterTrabalhador extends RecyclerView.Adapter<AdapterTrabalhador.
                                 }
                             }
                         });
-
             }
         });
 

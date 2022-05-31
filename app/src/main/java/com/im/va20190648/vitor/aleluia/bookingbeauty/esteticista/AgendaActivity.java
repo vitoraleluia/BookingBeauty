@@ -38,6 +38,7 @@ public class AgendaActivity extends AppCompatActivity {
     RecyclerView recyclerView;
     AdapterAgenda adapterAgenda;
     ArrayList<Marcacao> marcacoes;
+    ArrayList<Marcacao> marcacoesTrabalhadores;
     Date dataF, dataIni;
     private FirebaseFirestore db;
     private String name="";
@@ -56,8 +57,9 @@ public class AgendaActivity extends AppCompatActivity {
         vazio = findViewById(R.id.vazio);
 
         marcacoes = new ArrayList<Marcacao>();
+        marcacoesTrabalhadores = new ArrayList<Marcacao>();
 
-        adapterAgenda = new AdapterAgenda(this, marcacoes);
+        adapterAgenda = new AdapterAgenda(this, marcacoes, marcacoesTrabalhadores);
 
         recyclerView.setAdapter(adapterAgenda);
 
@@ -97,6 +99,7 @@ public class AgendaActivity extends AppCompatActivity {
 
                                 marcacao.setDocumentId(documentId);
                                 marcacoes.add(marcacao);
+                                marcacoesTrabalhadores.add(marcacao);
                                 adapterAgenda.notifyDataSetChanged();
                             }
                             if (task.getResult().isEmpty()) {
