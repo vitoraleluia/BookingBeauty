@@ -23,6 +23,7 @@ import com.google.firebase.firestore.FirebaseFirestoreException;
 import com.google.firebase.firestore.ListenerRegistration;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.LoginActivity;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.esteticista.EcraInicialEsteticista;
 
 public class EditarDadosUtilizador extends AppCompatActivity {
 
@@ -37,6 +38,7 @@ public class EditarDadosUtilizador extends AppCompatActivity {
     String nomeUt = null;
     String nomeNovo, emailNovo, passwordNova, telemovelNovo;
     String nomeAnterior, emailAnterior, passwordAnterior, telemovelAnterior;
+    int tipoUtilizador=0;
 
 
     @Override
@@ -72,6 +74,7 @@ public class EditarDadosUtilizador extends AppCompatActivity {
                         emailAnterior=snapshot.get("e-mail").toString();
                         passwordAnterior=snapshot.get("password").toString();
                         telemovelAnterior=snapshot.get("telemovel").toString();
+                        tipoUtilizador=Integer.parseInt(snapshot.get("tipoUser").toString());
 
                         nome.getEditText().setText(snapshot.get("nome").toString());
                         email.getEditText().setText(snapshot.get("e-mail").toString());
@@ -134,6 +137,17 @@ public class EditarDadosUtilizador extends AppCompatActivity {
 
     public void onClickEditarDados(View v){
         Intent i = new Intent(this, EditarDadosUtilizador.class);
+        startActivity(i);
+    }
+
+    public void onClickHomePage(View v){
+        Intent i;
+        if(tipoUtilizador == 0){
+            i = new Intent(this, EcraInicialCliente.class);
+        }else{
+            i = new Intent(this, EcraInicialEsteticista.class);
+        }
+
         startActivity(i);
     }
 }

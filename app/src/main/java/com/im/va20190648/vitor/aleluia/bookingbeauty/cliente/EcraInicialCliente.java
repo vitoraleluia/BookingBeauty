@@ -74,4 +74,8 @@ public class EcraInicialCliente extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void onClickHomePage(View v){
+
+    }
+
 }

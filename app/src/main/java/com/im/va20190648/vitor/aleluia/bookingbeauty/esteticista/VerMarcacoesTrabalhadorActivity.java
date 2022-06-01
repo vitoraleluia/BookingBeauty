@@ -99,4 +99,9 @@ public class VerMarcacoesTrabalhadorActivity extends AppCompatActivity {
         Intent i = new Intent(this, EditarDadosUtilizador.class);
         startActivity(i);
     }
+
+    public void onClickHomePage(View v){
+        Intent i = new Intent(this, EcraInicialEsteticista.class);
+        startActivity(i);
+    }
 }

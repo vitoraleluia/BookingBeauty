@@ -10,6 +10,7 @@ import android.view.View;
 import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
+import com.im.va20190648.vitor.aleluia.bookingbeauty.cliente.EcraInicialCliente;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.cliente.EditarDadosUtilizador;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.Servico;
 
@@ -65,6 +66,11 @@ public class AdicionarServico extends AppCompatActivity {
 
     public void onClickEditarDados(View v){
         Intent i = new Intent(this, EditarDadosUtilizador.class);
+        startActivity(i);
+    }
+
+    public void onClickHomePage(View v){
+        Intent i = new Intent(this, EcraInicialEsteticista.class);
         startActivity(i);
     }
 }

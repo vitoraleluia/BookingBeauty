@@ -74,4 +74,8 @@ public class EcraInicialEsteticista extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void onClickHomePage(View v){
+
+    }
+
 }

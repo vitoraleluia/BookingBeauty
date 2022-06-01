@@ -49,4 +49,8 @@ public class FimMarcacao extends AppCompatActivity {
         startActivity(i);
     }
 
+    public void onClickHomePage(View v){
+        Intent i = new Intent(this, EcraInicialCliente.class);
+        startActivity(i);
+    }
 }

@@ -72,4 +72,8 @@ public class LogoTopBar extends Fragment {
         Intent i = new Intent(getActivity(), EditarDadosUtilizador.class);
         startActivity(i);
     }
+
+    public void onClickHomePage(View v){
+
+    }
 }

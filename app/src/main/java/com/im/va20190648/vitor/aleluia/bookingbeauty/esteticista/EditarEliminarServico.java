@@ -83,4 +83,9 @@ public class EditarEliminarServico extends AppCompatActivity {
         Intent i = new Intent(this, Servicos.class);
         startActivity(i);
     }
+
+    public void onClickHomePage(View v){
+        Intent i = new Intent(this, EcraInicialEsteticista.class);
+        startActivity(i);
+    }
 }
