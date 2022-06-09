@@ -80,7 +80,7 @@ public class AdapterTrabalhador extends RecyclerView.Adapter<AdapterTrabalhador.
                         holder.dataM.setText(dataInicio);
                         holder.horaInicioM.setText(horaInicio);
                         holder.horaFimM.setText(horaFim);
-                        holder.precoM.setText(String.valueOf(marcacao.getPreco()));
+                        holder.precoM.setText(String.valueOf(marcacao.getPreco())+"€");
                         holder.estadoM.setText(marcacao.getEstado().toString());
                     }
                 });

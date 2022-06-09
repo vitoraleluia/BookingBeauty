@@ -2,7 +2,6 @@ package com.im.va20190648.vitor.aleluia.bookingbeauty.entidades;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,8 +17,6 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-import com.google.firebase.firestore.QueryDocumentSnapshot;
-import com.google.firebase.firestore.QuerySnapshot;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.R;
 
 import java.text.SimpleDateFormat;
@@ -81,7 +78,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
 
                             holder.dataInicio.setText(dataInicio);
                             holder.dataFim.setText(dataFim);
-                            holder.precoM.setText(String.valueOf(marcacao.getPreco()) + " euros");
+                            holder.precoM.setText(String.valueOf(marcacao.getPreco()) + "€");
                             holder.estadoM.setText(marcacao.getEstado().toString());
                         }
                     });
