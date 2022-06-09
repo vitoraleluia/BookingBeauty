@@ -8,7 +8,7 @@
     <string name="action_sign_in_short">Sign in</string>
     <string name="welcome">Welcome!!!</string>
     <string name="invalid_username">Not a valid username</string>
-    <string name="invalid_password">Password must be >5 characters</string>
+    <string name="invalid_password">Password must be >7 characters</string>
     <string name="login_failed">Login failed</string>
     <string name="BB_Servicos">Services</string>
     <string name="BB_Marcacoes">Appointments</string>
@@ -74,4 +74,6 @@
     <string name="BB_EmailJaExiste">E-mail already used!!!</string>
     <string name="BB_DadosAlterados">Successfully changed data!!!</string>
     <string name="BB_Saudacao">Welcome</string>
+    <string name="BB_NomeInvalido">Invalid name</string>
+    <string name="BB_NumeroInvalido">Invalid number</string>
 </resources>

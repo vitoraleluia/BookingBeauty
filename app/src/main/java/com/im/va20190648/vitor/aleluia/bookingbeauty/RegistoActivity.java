@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,6 +19,7 @@ import com.google.android.material.textfield.TextInputLayout;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.cliente.EcraInicialCliente;
@@ -27,106 +29,50 @@ import java.util.HashMap;
 
 public class RegistoActivity extends AppCompatActivity {
 
-    private TextInputLayout nomeRegisto, passwordRegisto, emailRegisto, ntelemovelRegisto;
-    private Button btRegistar;
-    private FirebaseAuth mAuth;
-    private Utilizador u;
-    private Boolean jaExiste=false;
+    private FirebaseAuth auth;
+    private FirebaseFirestore db;
+    private CollectionReference utilizadores;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registo);
 
-        nomeRegisto = (TextInputLayout) findViewById(R.id.nome);
-        passwordRegisto = (TextInputLayout) findViewById(R.id.password);
-        emailRegisto = (TextInputLayout) findViewById(R.id.email);
-        ntelemovelRegisto = (TextInputLayout) findViewById(R.id.telemovel);
-        mAuth = FirebaseAuth.getInstance();
-
-        btRegistar = findViewById(R.id.btRegistar);
-
-        btRegistar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String getNome = nomeRegisto.getEditText().getText().toString();
-                String getEmail = emailRegisto.getEditText().getText().toString();
-                String getPassword = passwordRegisto.getEditText().getText().toString();
-                String getNTelemovel = ntelemovelRegisto.getEditText().getText().toString();
-
-                registarUser();
-                criarUser();
-
-                HashMap<String, Object> hashMap = new HashMap<>();
-
-                hashMap.put("nome", getNome);
-                hashMap.put("e-mail", getEmail);
-                hashMap.put("password", getPassword);
-                hashMap.put("telemovel", getNTelemovel);
-                hashMap.put("tipoUser",u.getTipoUtilizador());
-
-                FirebaseFirestore.getInstance().collection("utilizadores")
-                        .whereEqualTo("email", getEmail)
-                        .get()
-                        .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
-                            @Override
-                            public void onComplete(@NonNull Task<QuerySnapshot> task) {
-                                if (!task.getResult().isEmpty()) {
-                                    emailRegisto.setError(getString(R.string.BB_EmailJaExiste));
-                                    jaExiste = true;
-                                    return;
-                                }
-                            }
-                        });
-
-
-                if(jaExiste) {
-                    FirebaseFirestore.getInstance().collection("utilizadores")
-                            .document(getEmail.toString())
-                            .set(hashMap)
-                            .addOnSuccessListener(new OnSuccessListener<Void>() {
-                                @Override
-                                public void onSuccess(Void unused) {
-                                    Toast.makeText(RegistoActivity.this, getString(R.string.BB_DadosAlterados), Toast.LENGTH_SHORT).show();
-                                }
-                            })
-                            .addOnFailureListener(new OnFailureListener() {
-                                @Override
-                                public void onFailure(@NonNull Exception e) {
-                                    Toast.makeText(RegistoActivity.this,""+e.getMessage(), Toast.LENGTH_SHORT).show();
-                                }
-                            });
-                }
-            }
-        });
+        db = FirebaseFirestore.getInstance();
+        utilizadores = db.collection("utilizadores");
+        auth = FirebaseAuth.getInstance();
     }
 
-    private void criarUser() {
-        mAuth.createUserWithEmailAndPassword(u.getEmail(),u.getPassword())
-                .addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            FirebaseUser user = mAuth.getCurrentUser();
-                            u.setId(user.getUid());
-                            u.guardarDados();
-                            startActivity(new Intent(RegistoActivity.this, EcraInicialCliente.class));
-                        }else{
-                            Toast.makeText(RegistoActivity.this,getString(R.string.BB_EmailJaExiste), Toast.LENGTH_SHORT).show();
-                        }
-                    }
-                });
-    }
+    public void onClickRegistar(View v){
+        TextInputLayout nomeTIL = findViewById(R.id.nome);
+        TextInputLayout emailTIL = findViewById(R.id.email);
+        TextInputLayout telemovelTIL = findViewById(R.id.telemovel);
+        TextInputLayout passwordTIL = findViewById(R.id.password);
 
-    private void registarUser() {
-        if(nomeRegisto.getEditText().getText().toString()==""||passwordRegisto.getEditText().getText().toString()==""|passwordRegisto.getEditText().getText().toString()==""||ntelemovelRegisto.getEditText().getText().toString()==""){
-            Toast.makeText(this,getString(R.string.BB_CampoObrigatorio),Toast.LENGTH_LONG);
-        } else{
-            u = new Utilizador();
-            u.setNome(nomeRegisto.getEditText().getText().toString());
-            u.setEmail(emailRegisto.getEditText().getText().toString());
-            u.setNtelemovel(ntelemovelRegisto.getEditText().getText().toString());
-            u.setPassword(passwordRegisto.getEditText().getText().toString());
+        String nome = nomeTIL.getEditText().getText().toString();
+        String email = emailTIL.getEditText().getText().toString();
+        String telemovel = telemovelTIL.getEditText().getText().toString();
+        String password = passwordTIL.getEditText().getText().toString();
+
+        //Verificação dos dados
+        if(!nome.matches("/^[a-z ,.'-]+$/i")){
+            nomeTIL.setError(getString(R.string.BB_NomeInvalido));
+            return;
+        }
+
+        if(utilizadores.document(email).get().getResult().exists()){
+            emailTIL.setError(getString(R.string.BB_EmailJaExiste));
+            return;
+        }
+
+        if(!telemovel.matches("/^[0-9]{9}$")){
+           telemovelTIL.setError(getString(R.string.BB_NumeroInvalido));
+           return;
+        }
+
+        if(password.length() < 8){
+            passwordTIL.setError(getString(R.string.invalid_password));
+            return;
         }
     }
 }
