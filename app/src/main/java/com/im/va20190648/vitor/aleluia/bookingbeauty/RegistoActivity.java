@@ -20,12 +20,14 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.firestore.CollectionReference;
+import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QuerySnapshot;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.cliente.EcraInicialCliente;
 import com.im.va20190648.vitor.aleluia.bookingbeauty.entidades.Utilizador;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class RegistoActivity extends AppCompatActivity {
 
@@ -55,24 +57,55 @@ public class RegistoActivity extends AppCompatActivity {
         String password = passwordTIL.getEditText().getText().toString();
 
         //Verificação dos dados
-        if(!nome.matches("/^[a-z ,.'-]+$/i")){
+        if(!nome.matches("^[a-zA-ZáéíóúÁÉÍÓÚãõÃÕâêîôûÂÊÎÔÛçÇ ]+$")){
             nomeTIL.setError(getString(R.string.BB_NomeInvalido));
             return;
-        }
-
-        if(utilizadores.document(email).get().getResult().exists()){
-            emailTIL.setError(getString(R.string.BB_EmailJaExiste));
-            return;
-        }
-
-        if(!telemovel.matches("/^[0-9]{9}$")){
-           telemovelTIL.setError(getString(R.string.BB_NumeroInvalido));
-           return;
         }
 
         if(password.length() < 8){
             passwordTIL.setError(getString(R.string.invalid_password));
             return;
         }
+
+        if(!telemovel.matches("^[0-9]{9}$")){
+           telemovelTIL.setError(getString(R.string.BB_NumeroInvalido));
+           return;
+        }
+
+        auth.createUserWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+            @Override
+            public void onComplete(@NonNull Task<AuthResult> task) {
+                if(task.isSuccessful()){
+                    //utilizador criado com sucesso
+                    Utilizador u = new Utilizador();
+                    u.setEmail(email);
+                    u.setNome(nome);
+                    u.setPassword(password);
+                    u.setNtelemovel(telemovel);
+
+                    Map<String, Object> dados = new HashMap<>();
+                    dados.put("e-mail", u.getEmail());
+                    dados.put("nome", u.getNome());
+                    dados.put("telemovel", u.getNtelemovel());
+                    dados.put("password", u.getPassword());
+                    dados.put("tipoUser", u.getTipoUtilizador());
+
+                    utilizadores.document(u.getEmail()).set(dados).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if(task.isSuccessful()){
+                                Intent i = new Intent(getApplicationContext(), EcraInicialCliente.class);
+                                startActivity(i);
+                            }else{
+                                Toast.makeText(getApplicationContext(), getString(R.string.BB_OcorreuErro), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }else{
+                    //Erro
+                    emailTIL.setError(getString(R.string.BB_EmailJaExiste));
+                }
+            }
+        });
     }
 }

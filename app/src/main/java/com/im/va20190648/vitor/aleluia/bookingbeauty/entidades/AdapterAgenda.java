@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -108,6 +109,7 @@ public class AdapterAgenda extends RecyclerView.Adapter<AdapterAgenda.ViewHolder
                                                         marcacoesTrabalhadores.remove(marcacao);
                                                         marcacoes.remove(marcacao);
                                                         notifyDataSetChanged();
+                                                        Toast.makeText(context.getApplicationContext(), "Marcação atendida", Toast.LENGTH_SHORT).show();
                                                         return;
                                                     }
                                                 }

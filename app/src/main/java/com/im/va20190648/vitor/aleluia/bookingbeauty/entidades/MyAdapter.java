@@ -8,6 +8,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -116,6 +117,7 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyViewHolder>{
                                                         if(task.isSuccessful()){
                                                             marcacoes.remove(marcacao);
                                                             notifyDataSetChanged();
+                                                            Toast.makeText(context.getApplicationContext(), "Marcação apagada", Toast.LENGTH_SHORT).show();
                                                         }
                                                     }
                                                 });

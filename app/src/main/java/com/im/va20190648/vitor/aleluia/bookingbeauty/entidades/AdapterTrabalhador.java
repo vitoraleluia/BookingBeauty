@@ -100,6 +100,7 @@ public class AdapterTrabalhador extends RecyclerView.Adapter<AdapterTrabalhador.
                                 if(task.isSuccessful()){
                                     marcacoes.remove(marcacao);
                                     notifyDataSetChanged();
+                                    Toast.makeText(context.getApplicationContext(), "Marcação rejeitada", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });
@@ -121,6 +122,7 @@ public class AdapterTrabalhador extends RecyclerView.Adapter<AdapterTrabalhador.
                                     marcacoesTrabalhadores.add(marcacao);
                                     marcacoes.remove(marcacao);
                                     notifyDataSetChanged();
+                                    Toast.makeText(context.getApplicationContext(), "Marcação aceite", Toast.LENGTH_SHORT).show();
                                 }
                             }
                         });

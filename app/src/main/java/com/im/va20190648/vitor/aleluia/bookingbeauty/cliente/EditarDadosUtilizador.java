@@ -96,18 +96,17 @@ public class EditarDadosUtilizador extends AppCompatActivity {
 
     public void botaoPremido(View v) {
 
-        if(nome.getEditText().getText().toString().trim().matches("")) {
-            nome.setError(getString(R.string.BB_CampoObrigatorio));
+        if(nome.getEditText().getText().toString().matches("^[a-zA-ZáéíóúÁÉÍÓÚãõÃÕâêîôûÂÊÎÔÛçÇ ]+$")) {
+            nome.setError(getString(R.string.BB_NomeInvalido));
             return;
 
         } else if(password.getEditText().getText().toString().trim().matches("")){
             password.setError(getString(R.string.BB_CampoObrigatorio));
             return;
 
-        } else if(telemovel.getEditText().getText().toString().trim().matches("")) {
-            telemovel.setError(getString(R.string.BB_CampoObrigatorio));
+        } else if(telemovel.getEditText().getText().toString().matches("^[0-9]{9}$")) {
+            telemovel.setError(getString(R.string.BB_NumeroInvalido));
             return;
-
         } else {
             nomeNovo = nome.getEditText().getText().toString();
             passwordNova = password.getEditText().getText().toString();
@@ -120,7 +119,7 @@ public class EditarDadosUtilizador extends AppCompatActivity {
                 telemovel.setError(getString(R.string.BB_TelemovelNaoAlterado));
                 return;
 
-            } else if (passwordNova.length()<=6) {
+            } else if (passwordNova.length() < 8) {
                 password.setError(getString(R.string.invalid_password));
                 return;
 
